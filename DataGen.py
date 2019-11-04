@@ -1,17 +1,42 @@
 #!/usr/bin/python
 
 import sys
+import getopt
 import json
 import random
 import pandas as pd
 
-def main():
+def main(argv):
 
-    with open("resources/sampleSurvey.json", "r") as survey_config_file:
+    survey_config_file_path = 'resources/sampleSurvey.json'
+    region_list_file_path = 'resources/regionList.csv'
+    enterprise_list_file_path = 'resources/enterpriseList.csv'
+    output_file_path = 'resources/out.csv'
+
+    try:
+        opts, args = getopt.getopt(argv,"hs:r:e:o:",["survey_file=","region_file=","enterprise_file=","output_file="])
+    except getopt.GetoptError:
+        print ('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> -o <output_file>')
+        sys.exit(2)
+        
+    for opt, arg in opts:
+        if opt == '-h':
+            print ('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> -o <output_file>')
+            sys.exit()
+        elif opt in ("-s", "--survey_file"):
+            survey_config_file_path = arg
+        elif opt in ("-r", "--region_file"):
+            region_list_file_path = arg
+        elif opt in ("-e", "--enterprise_file"):
+            enterprise_list_file_path = arg
+        elif opt in ("-o", "--output_file"):
+            output_file_path = arg
+
+    with open(survey_config_file_path, "r") as survey_config_file:
         survey_config = json.load(survey_config_file)
 
-    regions = pd.read_csv("resources/regionList.csv")
-    enterprises = pd.read_csv("resources/enterpriseList.csv", )
+    regions = pd.read_csv(region_list_file_path)
+    enterprises = pd.read_csv(enterprise_list_file_path, )
 
     sub_ref = 10000000000
     
@@ -44,7 +69,8 @@ def main():
                     "period": period,
                     "ruref": sub_ref,
                     "ent_ref": ent_ref,
-                    "ent_name": ent_name
+                    "ent_name": ent_name,
+                    "region":sub_region
                 }, index=[0])
 
                 # decide if non-respondent
@@ -83,7 +109,7 @@ def main():
             
     # save to csv
     output_df = output_df.ix[:, column_order]
-    output_df.to_csv("resources/out.csv", header=False)
+    output_df.to_csv(output_file_path, header=False, index=False)
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])
