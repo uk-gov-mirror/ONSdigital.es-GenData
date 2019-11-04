@@ -74,22 +74,27 @@ The list of value columns to generate. Each is a dictionary with the following p
 | `max`          | the highest value to use for those responses, exclusive (Int)                                                               |
 
 ## Region List file
-This must be a csv file listing region codes, usually just 2 letters. Each region is given it's own line like this:
+This must be a csv file listing region codes, usually just 2 letters. Each region is given its own line like this:
 
     AA,
     BB,
     ...,
     ZZ
+
 Longer codes are allowed by this script but may not be compatible with the code run of the sample file produces.
 Note that there is no header for this table.
-## Enterprise List file
-This must be a csv file listing enterprise names and 10 digit enterprise ids. Each of those pairs is on it's own row like this:
 
-    Alice Apples, 1000000001
-    Bob Bannans, 1000000002
+## Enterprise List file
+This must be a csv file listing enterprise names and 10 digit enterprise ids. Each of those pairs is on its own row like this:
+
+    Apples with Alice, 1000000001
+    Bannans by Bob, 1000000002
     ...
-    Zack Zucchinis, 9999999999
+    Zucchinis from Zack, 9999999999
+
 Enterprise names have only been tested to contain letters a-zA-Z and spaces, but other characters may work too. The id has to be numeric made of 10 digits (0-9) and can not start with a '0'.
+
 ## Output file
 This will be produced by the script. Please specify a file name and location that the script can write to. 
+
 **Warning:** this script **will overwrite** the file you specify, if making multiple files make sure to change this argument or make a copy of this file in a safe location between executions.
