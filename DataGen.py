@@ -12,16 +12,17 @@ def main(argv):
     region_list_file_path = 'resources/regionList.csv'
     enterprise_list_file_path = 'resources/enterpriseList.csv'
     output_file_path = 'resources/out.csv'
+    sub_ref = 10000000000
 
     try:
-        opts, args = getopt.getopt(argv,"hs:r:e:o:",["survey_file=","region_file=","enterprise_file=","output_file="])
+        opts, args = getopt.getopt(argv,"hs:r:e:o:id:",["survey_file=","region_file=","enterprise_file=","output_file=","starting_id="])
     except getopt.GetoptError:
-        print ('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> -o <output_file>')
+        print ('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> -o <output_file> -id <starting_id>')
         sys.exit(2)
         
     for opt, arg in opts:
         if opt == '-h':
-            print ('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> -o <output_file>')
+            print ('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> -o <output_file> -id <starting_id>')
             sys.exit()
         elif opt in ("-s", "--survey_file"):
             survey_config_file_path = arg
@@ -31,6 +32,8 @@ def main(argv):
             enterprise_list_file_path = arg
         elif opt in ("-o", "--output_file"):
             output_file_path = arg
+        elif opt in ("-id", "--starting_id"):
+            sub_ref = arg
 
     with open(survey_config_file_path, "r") as survey_config_file:
         survey_config = json.load(survey_config_file)
@@ -38,7 +41,6 @@ def main(argv):
     regions = pd.read_csv(region_list_file_path)
     enterprises = pd.read_csv(enterprise_list_file_path, )
 
-    sub_ref = 10000000000
     
     output_df = pd.DataFrame(columns=survey_config['data_frame_columns'])
     column_order = output_df.columns

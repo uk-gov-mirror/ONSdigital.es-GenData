@@ -3,6 +3,7 @@
         "period",
         "ruref",
         "response_type",
+        "region",
         "ent_ref",
         "ent_name",
         "data_0",
@@ -26,15 +27,15 @@
         },
         {
             "col_name": "data_1",
-            "prob_of_data":0.2,
-            "default":0,
+            "prob_of_data": 0.2,
+            "default": 0,
             "min": 100,
             "max": 800
         },
         {
             "col_name": "data_2",
-            "prob_of_data":1,
-            "default":0,
+            "prob_of_data": 1,
+            "default": 0,
             "min": 1,
             "max": 15
         }
