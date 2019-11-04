@@ -1,0 +1,28 @@
+{
+    "periods": {
+        "previous": 201812,
+        "current": 201903
+    },
+    "number_of_enterprises":10,
+    "response_rate":0.9,
+    "values": [
+        {
+            "prob_of_data":0.5,
+            "default":0,
+            "min": 10,
+            "max": 1000
+        },
+        {
+            "prob_of_data":0.2,
+            "default":0,
+            "min": 100,
+            "max": 800
+        },
+        {
+            "prob_of_data":1,
+            "default":0,
+            "min": 1,
+            "max": 15
+        }
+    ]
+}
