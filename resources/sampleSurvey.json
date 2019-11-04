@@ -1,24 +1,38 @@
 {
-    "periods": {
-        "previous": 201812,
-        "current": 201903
-    },
+    "data_frame_columns":[
+        "period",
+        "ruref",
+        "response_type",
+        "ent_ref",
+        "ent_name",
+        "data_0",
+        "data_1",
+        "data_2",
+        "sum"
+    ],
+    "periods": [
+        201812,
+        201903
+    ],
     "number_of_enterprises":10,
-    "response_rate":0.9,
+    "response_rate":0.5,
     "values": [
         {
-            "prob_of_data":0.5,
-            "default":0,
+            "col_name": "data_0",
+            "prob_of_data": 0.5,
+            "default": 0,
             "min": 10,
             "max": 1000
         },
         {
+            "col_name": "data_1",
             "prob_of_data":0.2,
             "default":0,
             "min": 100,
             "max": 800
         },
         {
+            "col_name": "data_2",
             "prob_of_data":1,
             "default":0,
             "min": 1,
