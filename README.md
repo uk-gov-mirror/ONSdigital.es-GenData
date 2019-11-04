@@ -7,27 +7,32 @@ To execute cd into the directory for this repo and execute:
 
     DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> -o <output_file> -id <starting_id>
 
-All options are optional as the default values are set to point at files within the repo. 
+All arguments are optional as the default values are set to point at files within the repo. 
 
-## Options:
+## Arguments:
 ### -s / survey_file
 Path to the file which contains the configuration for the survey you want to generate. To make your own, look at the section about file structures below.
+
 Default: `resources/sampleSurvey.json`
 
 ### -r / region_file
 Path to the file which contains a comma and line separated list of region codes. To make your own, look at the section about file structures below.
+
 Default: `resources/regionList.csv`
 
 ### -e / enterprise_file
 Path to the file which contains a comma and line separated list of enterprise names and ids. To make your own, look at the section about file structures below.
+
 Default: `resources/enterpriseList.csv`
 
 ### -o / output_file
 Path to target output file doesn't have to exist yet as this script will create (and overwrite) it. Should be in a .csv extension.
+
 Default: `resources/out.csv`
 
 ### -id / starting_id
 The number from which the numbering of respondents should start above (the first id will be 1 higher than the number you provide). The value must be a whole number, containing only digits 0-9 and it must not start with a '0'.
+
 Default: `10000000000`
 
 ## Requirements
