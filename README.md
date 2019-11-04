@@ -64,13 +64,15 @@ This will determine how many of the responses (individual per respondent and per
 
     "values":[ {"col_name": "data_###", "prob_of_data": 0.5, "default": 0, "min": 1, "max": 100}, ...]
 The list of value columns to generate. Each is a dictionary with the following properties:
-| key | Expected value |
-|--|--|
-| `col_name` | Must match one of the `data_###` items from the `data_frame_columns` list above (String) |
-| `prob_of_data` | How likely is it that this field has a response, if it doesn't it will be populated with the value of `default` (Float) |
-| `default` | Value used for empty responses (either because the whole response or just this value is under the response threshold) (any) |
-| `min` | The lowest value to use for those responses, inclusive (Int) |
-| `max` | the highest value to use for those responses, exclusive (Int) |
+
+| Key            | Expected value                                                                                                              |
+|----------------|-----------------------------------------------------------------------------------------------------------------------------|
+| `col_name`     | Must match one of the `data_###` items from the `data_frame_columns` list above (String)                                    |
+| `prob_of_data` | How likely is it that this field has a response, if it doesn't it will be populated with the value of `default` (Float)     |
+| `default`      | Value used for empty responses (either because the whole response or just this value is under the response threshold) (any) |
+| `min`          | The lowest value to use for those responses, inclusive (Int)                                                                |
+| `max`          | the highest value to use for those responses, exclusive (Int)                                                               |
+
 ## Region List file
 This must be a csv file listing region codes, usually just 2 letters. Each region is given it's own line like this:
 
