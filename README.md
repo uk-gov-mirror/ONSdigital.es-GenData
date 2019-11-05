@@ -1,4 +1,4 @@
-# # es-GenData
+# es-GenData
 
 This script allows the user to quickly generate a data response file for the BMI surveys. It generates this synthetic data based on input configuration and lists which can be specified in command-line arguments (listed below). 
 
@@ -51,21 +51,41 @@ with libraries:
 ## Survey config file:
 Is a json file with the following content required
 
-    "data_frame_columns": ["period", "ruref", ..., "sum" ]
-This list must contain all the named fields, so not the `data_0`, `data_1` ... columns, in the order in which you want them to appear in the final output file.
-The `data_###` columns must appear one for each data column you want to generate (more on this below).
+    "data_frame_columns": [
+        "period",
+        "ruref",
+        "response_type",
+        "region",
+        "ent_ref",
+        "ent_name",
+        "data_0",
+        "data_1",
+        "data_2",
+        "data_3",
+        "sum_1",
+        "sum_2" ]
+
+The first 6 columns are required, you can have any number of `data_###` and `sum_###` columns you want as documented below.
+
+### period
 
     "periods": [201903, 201906]
 
 This list of periods will determine how many periods each respondent will reply to, note that each enterprise will have between 1 and 5 respondents, each replaying for ALL periods. 
 
+### number of enterprises
+
     "number_of_enterprises": 10
 
 This is the number of unique enterprises with names to generate, not that if you require more than 30 you will need to supply your own enterpriseList.csv file as the default only has 30 entries. The software will automatically cap at this number. Names are assigned sequentially.
 
+### response rate
+
     "response_rate": 0.5
 
 This will determine how many of the responses (individual per respondent and period) will be filled with synthetic data. Any data that is labelled as a non-response will use the 'default' value (explained below).
+
+### value columns
 
     "values":[ {"col_name": "data_###", "prob_of_data": 0.5, "default": 0, "min": 1, "max": 100}, ...]
 The list of value columns to generate. Each is a dictionary with the following properties:
@@ -76,7 +96,32 @@ The list of value columns to generate. Each is a dictionary with the following p
 | `prob_of_data` | How likely is it that this field has a response, if it doesn't it will be populated with the value of `default` (Float)     |
 | `default`      | Value used for empty responses (either because the whole response or just this value is under the response threshold) (any) |
 | `min`          | The lowest value to use for those responses, inclusive (Int)                                                                |
-| `max`          | the highest value to use for those responses, exclusive (Int)                                                               |
+| `max` *1**      | The highest value to use for those responses, exclusive (Int)                                                               |
+| `max_from` *1** | A list of strings mapping to the columns declared ealier. For example: `["data_0", "data_1", ...]`. The scipt will add the value of the columns provided *2** and set it as the max. If that value is less then the `min` value, this row will be populated by the `default` value instead.
+
+*1** *Use the `max` column **or** the `max_from` column, not both.*
+
+*2** *The columns to consider must be listed **before** the one with a `max_from` field*
+
+### sum columns
+
+    "sum_columns": [
+        {   
+            "col_name": "sum_1",
+            "data": [
+                "data_0",
+                "data_1"
+            ]
+        },
+        ...
+    ]
+
+This is a list of sum columns you want to generate. The values provided in `col_name` and in the `data` list must match the values listed in `data_frame_columns`.
+
+| Key | Expected value |
+| --- | -------------- |
+| `col_name` | Name of the sum column, must be one of the names listed in `data_frame_columns`. |
+| `data`    | List of column names that will be added to create the sum. These names must be listed in the `data_frame_colums` list. |
 
 ## Region List file
 This must be a csv file listing region codes, usually just 2 letters. Each region is given its own line like this:
