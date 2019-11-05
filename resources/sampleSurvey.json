@@ -57,17 +57,15 @@
     "sum_columns": [
         {   
             "col_name": "sum_1",
-            "data": [
-                "data_0",
-                "data_1"
-            ]
+            "data":
+                {"data_0": "+",
+                "data_1":  "+"}
         },
         {
             "col_name": "sum_2",
-            "data": [
-                "data_2",
-                "data_3"
-            ]
+            "data":
+                {"data_2": "+",
+                "data_3":  "-"}
         }
     ]
 }

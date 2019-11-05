@@ -108,10 +108,10 @@ The list of value columns to generate. Each is a dictionary with the following p
     "sum_columns": [
         {   
             "col_name": "sum_1",
-            "data": [
-                "data_0",
-                "data_1"
-            ]
+            "data": {
+                "data_0": "+",
+                "data_1": "-"
+            }
         },
         ...
     ]
@@ -121,7 +121,7 @@ This is a list of sum columns you want to generate. The values provided in `col_
 | Key | Expected value |
 | --- | -------------- |
 | `col_name` | Name of the sum column, must be one of the names listed in `data_frame_columns`. |
-| `data`    | List of column names that will be added to create the sum. These names must be listed in the `data_frame_colums` list. |
+| `data`    | Dict of column names that will be included to create the sum and whether they should be added or subtracted. These names must be listed in the `data_frame_colums` list. |
 
 ## Region List file
 This must be a csv file listing region codes, usually just 2 letters. Each region is given its own line like this:

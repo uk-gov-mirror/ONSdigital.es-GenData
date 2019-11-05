@@ -50,7 +50,6 @@ def main(argv):
         # pick enterprise name and id from list file
         ent_name = enterprises.iloc[ent_idx, 0]
         ent_ref = enterprises.iloc[ent_idx, 1]
-        #print(ent_idx, ent_name)
         
         # decide on a number of subsidiaries the enterprise has
         number_of_subsidiaries = random.randrange(1,5)
@@ -62,7 +61,6 @@ def main(argv):
             
             # pick a region from list file
             sub_region = regions.iloc[random.randrange(0, len(regions.index)), 0]
-            #print (sub_ref, sub_region)
 
             # for each period
             for period in survey_config['periods']:
@@ -104,7 +102,6 @@ def main(argv):
                                 max_value = 0
                                 for agg_col in value['max_from']:
                                     max_value += response_df.iloc[0][agg_col]
-                                    print(max_value)
                                 
                                 if (max_value > value['min']):
                                     new_value= random.randrange(value['min'], max_value)
@@ -119,8 +116,10 @@ def main(argv):
                     for sum_col in survey_config['sum_columns']:
                         new_sum = 0
                         for data_col in sum_col['data']:
-                            new_sum += response_df.iloc[0][data_col]
-                        
+                            if sum_col['data'][data_col] == "+":
+                                new_sum += response_df.iloc[0][data_col]
+                            elif sum_col['data'][data_col] == "-":
+                                new_sum -= response_df.iloc[0][data_col]
                         response_df[sum_col['col_name']] = new_sum
                 
                 # add this response to output data frame
