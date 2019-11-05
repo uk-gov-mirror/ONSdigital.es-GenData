@@ -82,8 +82,9 @@ def main(argv):
                     for value in survey_config['values']:
                         response_df[value['col_name']] = value['default']
 
-                    response_df['sum'] = 0
-                    #print(response_df)
+                    # calculate all sum columns
+                    for sum_col in survey_config['sum_columns']:
+                        response_df[sum_col['col_name']] = 0
                 else:
                     response_df['response_type'] = 2
                     response_sum = 0
@@ -96,7 +97,17 @@ def main(argv):
                         # should value be a valid response
                         if (random.random() <= value['prob_of_data']):
                             # generate a rand value from range in config
-                            new_value= random.randrange(value['min'], value['max'])
+                            if 'max' in value:
+                                new_value= random.randrange(value['min'], value['max'])
+                            # generate a rang value from a range and the sum of specified columns
+                            elif 'max_from' in value:
+                                max_value = 0
+                                for agg_col in value['max_from']:
+                                    max_value += response_df.iloc[0][agg_col]
+                                    print(max_value)
+                                
+                                if (max_value > value['min']):
+                                    new_value= random.randrange(value['min'], max_value)
                         
                         # assign response value
                         response_df[value['col_name']] = new_value
@@ -104,7 +115,13 @@ def main(argv):
                         # add to sum column
                         response_sum += new_value
 
-                    response_df['sum'] = response_sum
+                    # calculate all sum columns
+                    for sum_col in survey_config['sum_columns']:
+                        new_sum = 0
+                        for data_col in sum_col['data']:
+                            new_sum += response_df.iloc[0][data_col]
+                        
+                        response_df[sum_col['col_name']] = new_sum
                 
                 # add this response to output data frame
                 output_df = output_df.append(response_df, ignore_index=True)

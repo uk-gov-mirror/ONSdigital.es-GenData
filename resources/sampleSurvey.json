@@ -9,7 +9,9 @@
         "data_0",
         "data_1",
         "data_2",
-        "sum"
+        "data_3",
+        "sum_1",
+        "sum_2"
     ],
     "periods": [
         201812,
@@ -34,10 +36,38 @@
         },
         {
             "col_name": "data_2",
-            "prob_of_data": 1,
+            "prob_of_data": 0.8,
             "default": 0,
             "min": 1,
-            "max": 15
+            "max_from": [
+                "data_0"
+            ]
+        },
+        {
+            "col_name": "data_3",
+            "prob_of_data": 1,
+            "default": 0,
+            "min": 0,
+            "max_from": [
+                "data_1",
+                "data_2"
+            ]
+        }
+    ],
+    "sum_columns": [
+        {   
+            "col_name": "sum_1",
+            "data": [
+                "data_0",
+                "data_1"
+            ]
+        },
+        {
+            "col_name": "sum_2",
+            "data": [
+                "data_2",
+                "data_3"
+            ]
         }
     ]
 }
