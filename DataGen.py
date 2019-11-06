@@ -18,8 +18,8 @@ def main(argv):
 
     try:
         opts, args = getopt.getopt(argv, "hs:r:e:o:i:", ["survey_file=", "region_file=",
-                                                          "enterprise_file=",
-                                                          "output_file=", "starting_id="])
+                                                         "enterprise_file=",
+                                                         "output_file=", "starting_id="])
     except getopt.GetoptError:
         print('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> ' +
               '-o <output_file> -i <starting_id>')
