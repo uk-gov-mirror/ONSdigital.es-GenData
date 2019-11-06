@@ -4,8 +4,8 @@
         "ruref",
         "response_type",
         "region",
-        "ent_ref",
-        "ent_name",
+        "enterprise_ref",
+        "entterprise_name",
         "data_0",
         "data_1",
         "data_2",
@@ -21,22 +21,22 @@
     "response_rate":0.5,
     "values": [
         {
-            "col_name": "data_0",
-            "prob_of_data": 0.5,
+            "column_name": "data_0",
+            "probability_of_data": 0.5,
             "default": 0,
             "min": 10,
             "max": 1000
         },
         {
-            "col_name": "data_1",
-            "prob_of_data": 0.2,
+            "column_name": "data_1",
+            "probability_of_data": 0.2,
             "default": 0,
             "min": 100,
             "max": 800
         },
         {
-            "col_name": "data_2",
-            "prob_of_data": 0.8,
+            "column_name": "data_2",
+            "probability_of_data": 0.8,
             "default": 0,
             "min": 1,
             "max_from": [
@@ -44,8 +44,8 @@
             ]
         },
         {
-            "col_name": "data_3",
-            "prob_of_data": 1,
+            "column_name": "data_3",
+            "probability_of_data": 1,
             "default": 0,
             "min": 0,
             "max_from": [
@@ -56,13 +56,13 @@
     ],
     "sum_columns": [
         {   
-            "col_name": "sum_1",
+            "column_name": "sum_1",
             "data":
                 {"data_0": "+",
                 "data_1":  "+"}
         },
         {
-            "col_name": "sum_2",
+            "column_name": "sum_2",
             "data":
                 {"data_2": "+",
                 "data_3":  "-"}

@@ -10,11 +10,11 @@ import pandas as pd
 
 def main(argv):
 
-    survey_config_file_path = 'resources/sampleSurvey.json'
-    region_list_file_path = 'resources/regionList.csv'
-    enterprise_list_file_path = 'resources/enterpriseList.csv'
-    output_file_path = 'resources/out.csv'
-    sub_ref = 10000000000
+    survey_config_file_path = 'fixtures/sample_survey.json'
+    region_list_file_path = 'fixtures/region_list.csv'
+    enterprise_list_file_path = 'fixtures/enterprise_list.csv'
+    output_file_path = 'fixtures/out.csv'
+    ruref = 10000000000
 
     try:
         opts, args = getopt.getopt(argv, "hs:r:e:o:i:", ["survey_file=", "region_file=",
@@ -39,7 +39,7 @@ def main(argv):
         elif opt in ("-o", "--output_file"):
             output_file_path = arg
         elif opt in ("-i", "--starting_id"):
-            sub_ref = int(arg)
+            ruref = int(arg)
 
     with open(survey_config_file_path, "r") as survey_config_file:
         survey_config = json.load(survey_config_file)
@@ -51,32 +51,32 @@ def main(argv):
     column_order = output_df.columns
 
     # generate the required enterprises
-    for ent_idx in range(0, min(survey_config['number_of_enterprises'],
-                                len(enterprises.index))):
+    for enterprise_index in range(0, min(survey_config['number_of_enterprises'],
+                                         len(enterprises.index))):
         # pick enterprise name and id from list file
-        ent_name = enterprises.iloc[ent_idx, 0]
-        ent_ref = enterprises.iloc[ent_idx, 1]
+        enterprise_name = enterprises.iloc[enterprise_index, 0]
+        enterprise_ref = enterprises.iloc[enterprise_index, 1]
 
         # decide on a number of subsidiaries the enterprise has
         number_of_subsidiaries = random.randrange(1, 5)
 
         # for each subsidiary
-        for sub_idx in range(0, number_of_subsidiaries):
+        for subsidiary_index in range(0, number_of_subsidiaries):
             # generate a ruref
-            sub_ref += 1
+            ruref += 1
 
             # pick a region from list file
-            sub_region = regions.iloc[random.randrange(0, len(regions.index)), 0]
+            subsidiary_region = regions.iloc[random.randrange(0, len(regions.index)), 0]
 
             # for each period
             for period in survey_config['periods']:
                 # add new row to the output
                 response_df = pd.DataFrame({
                     "period": period,
-                    "ruref": sub_ref,
-                    "ent_ref": ent_ref,
-                    "ent_name": ent_name,
-                    "region": sub_region
+                    "ruref": ruref,
+                    "enterprise_ref": enterprise_ref,
+                    "enterprise_name": enterprise_name,
+                    "region": subsidiary_region
                 }, index=[0])
 
                 # decide if non-respondent
@@ -84,14 +84,13 @@ def main(argv):
                     response_df['response_type'] = 1
 
                     for value in survey_config['values']:
-                        response_df[value['col_name']] = value['default']
+                        response_df[value['column_name']] = value['default']
 
                     # calculate all sum columns
-                    for sum_col in survey_config['sum_columns']:
-                        response_df[sum_col['col_name']] = 0
+                    for sum_column in survey_config['sum_columns']:
+                        response_df[sum_column['column_name']] = 0
                 else:
                     response_df['response_type'] = 2
-                    response_sum = 0
 
                     # for each value in config
                     for value in survey_config['values']:
@@ -99,7 +98,7 @@ def main(argv):
                         new_value = value['default']
 
                         # should value be a valid response
-                        if random.random() <= value['prob_of_data']:
+                        if random.random() <= value['probability_of_data']:
                             # generate a rand value from range in config
                             if 'max' in value:
                                 new_value = random.randrange(value['min'], value['max'])
@@ -107,27 +106,24 @@ def main(argv):
                             # the sum of specified columns
                             elif 'max_from' in value:
                                 max_value = 0
-                                for agg_col in value['max_from']:
-                                    max_value += response_df.iloc[0][agg_col]
+                                for aggregated_column in value['max_from']:
+                                    max_value += response_df.iloc[0][aggregated_column]
 
                                 if max_value > value['min']:
                                     new_value = random.randrange(value['min'], max_value)
 
-                        # assign response value
-                        response_df[value['col_name']] = new_value
-
-                        # add to sum column
-                        response_sum += new_value
+                        # save the value generaed above in the current response
+                        response_df[value['column_name']] = new_value
 
                     # calculate all sum columns
-                    for sum_col in survey_config['sum_columns']:
+                    for sum_column in survey_config['sum_columns']:
                         new_sum = 0
-                        for data_col in sum_col['data']:
-                            if sum_col['data'][data_col] == "+":
-                                new_sum += response_df.iloc[0][data_col]
-                            elif sum_col['data'][data_col] == "-":
-                                new_sum -= response_df.iloc[0][data_col]
-                        response_df[sum_col['col_name']] = new_sum
+                        for data_column in sum_column['data']:
+                            if sum_column['data'][data_column] == "+":
+                                new_sum += response_df.iloc[0][data_column]
+                            elif sum_column['data'][data_column] == "-":
+                                new_sum -= response_df.iloc[0][data_column]
+                        response_df[sum_column['column_name']] = new_sum
 
                 # add this response to output data frame
                 output_df = output_df.append(response_df, ignore_index=True)
