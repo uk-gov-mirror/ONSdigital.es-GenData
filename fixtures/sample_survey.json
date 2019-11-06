@@ -1,0 +1,71 @@
+{
+    "data_frame_columns":[
+        "period",
+        "ruref",
+        "response_type",
+        "region",
+        "enterprise_ref",
+        "entterprise_name",
+        "data_0",
+        "data_1",
+        "data_2",
+        "data_3",
+        "sum_1",
+        "sum_2"
+    ],
+    "periods": [
+        201812,
+        201903
+    ],
+    "number_of_enterprises":10,
+    "response_rate":0.5,
+    "values": [
+        {
+            "column_name": "data_0",
+            "probability_of_data": 0.5,
+            "default": 0,
+            "min": 10,
+            "max": 1000
+        },
+        {
+            "column_name": "data_1",
+            "probability_of_data": 0.2,
+            "default": 0,
+            "min": 100,
+            "max": 800
+        },
+        {
+            "column_name": "data_2",
+            "probability_of_data": 0.8,
+            "default": 0,
+            "min": 1,
+            "max_from": [
+                "data_0"
+            ]
+        },
+        {
+            "column_name": "data_3",
+            "probability_of_data": 1,
+            "default": 0,
+            "min": 0,
+            "max_from": [
+                "data_1",
+                "data_2"
+            ]
+        }
+    ],
+    "sum_columns": [
+        {   
+            "column_name": "sum_1",
+            "data":
+                {"data_0": "+",
+                "data_1":  "+"}
+        },
+        {
+            "column_name": "sum_2",
+            "data":
+                {"data_2": "+",
+                "data_3":  "-"}
+        }
+    ]
+}
