@@ -5,7 +5,7 @@ This script allows the user to quickly generate a data response file for the BMI
 # Usage
 To execute cd into the directory for this repo and execute:
 
-    DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> -o <output_file> -id <starting_id>
+    DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> -o <output_file> -i <starting_id>
 
 All arguments are optional as the default values are set to point at files within the repo. 
 
@@ -30,7 +30,7 @@ Path to target output file doesn't have to exist yet as this script will create 
 
 Default: `resources/out.csv`
 
-### -id / starting_id
+### -i / starting_id
 The number from which the numbering of respondents should start above (the first id will be 1 higher than the number you provide). The value must be a whole number, containing only digits 0-9 and it must not start with a '0'.
 
 Default: `10000000000`

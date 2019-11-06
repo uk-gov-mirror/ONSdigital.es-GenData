@@ -17,18 +17,18 @@ def main(argv):
     sub_ref = 10000000000
 
     try:
-        opts, args = getopt.getopt(argv, "hs:r:e:o:id:", ["survey_file=", "region_file=",
+        opts, args = getopt.getopt(argv, "hs:r:e:o:i:", ["survey_file=", "region_file=",
                                                           "enterprise_file=",
                                                           "output_file=", "starting_id="])
     except getopt.GetoptError:
         print('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> ' +
-              '-o <output_file> -id <starting_id>')
+              '-o <output_file> -i <starting_id>')
         sys.exit(2)
 
     for opt, arg in opts:
         if opt == '-h':
             print('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> ' +
-                  '-o <output_file> -id <starting_id>')
+                  '-o <output_file> -i <starting_id>')
             sys.exit()
         elif opt in ("-s", "--survey_file"):
             survey_config_file_path = arg
@@ -38,8 +38,8 @@ def main(argv):
             enterprise_list_file_path = arg
         elif opt in ("-o", "--output_file"):
             output_file_path = arg
-        elif opt in ("-id", "--starting_id"):
-            sub_ref = arg
+        elif opt in ("-i", "--starting_id"):
+            sub_ref = int(arg)
 
     with open(survey_config_file_path, "r") as survey_config_file:
         survey_config = json.load(survey_config_file)
