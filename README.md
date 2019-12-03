@@ -5,7 +5,7 @@ This script allows the user to quickly generate a data response file for the BMI
 # Usage
 To execute cd into the directory for this repo and execute:
 
-    DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> -o <output_file> -i <starting_id>
+    DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> -o <output_file> -i <starting_id> -p <period_split>
 
 All arguments are optional as the default values are set to point at files within the repo. 
 
