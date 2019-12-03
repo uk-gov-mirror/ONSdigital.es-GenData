@@ -37,9 +37,9 @@ Default: `10000000000`
 
 ### -p / period_split
 Boolean value to determine if the output is to be split into two seperate files;
-    - current period
-    - previous period
-; to be saved in the fixtures directory. This is required for the AWS system where previous period is brought in at the Imputation stage.
+    * current period
+    * previous period;
+to be saved in the fixtures directory. This is required for the AWS system where previous period is brought in at the Imputation stage.
 
 Default: `True`
 
