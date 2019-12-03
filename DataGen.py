@@ -15,20 +15,23 @@ def main(argv):
     enterprise_list_file_path = 'fixtures/enterprise_list.csv'
     output_file_path = 'fixtures/out.csv'
     ruref = 10000000000
+    split = True
 
     try:
-        opts, args = getopt.getopt(argv, "hs:r:e:o:i:", ["survey_file=", "region_file=",
-                                                         "enterprise_file=",
-                                                         "output_file=", "starting_id="])
+        opts, args = getopt.getopt(argv, "hs:r:e:o:i:p:", ["survey_file=", "region_file=",
+                                                           "enterprise_file=",
+                                                           "output_file=",
+                                                           "starting_id=", "period_split="
+                                                           ])
     except getopt.GetoptError:
         print('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> ' +
-              '-o <output_file> -i <starting_id>')
+              '-o <output_file> -i <starting_id> -p <period_split>')
         sys.exit(2)
 
     for opt, arg in opts:
         if opt == '-h':
             print('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> ' +
-                  '-o <output_file> -i <starting_id>')
+                  '-o <output_file> -i <starting_id> -p <period_split>')
             sys.exit()
         elif opt in ("-s", "--survey_file"):
             survey_config_file_path = arg
@@ -40,6 +43,8 @@ def main(argv):
             output_file_path = arg
         elif opt in ("-i", "--starting_id"):
             ruref = int(arg)
+        elif opt in ("-p", "--period_split"):
+            split = arg
 
     with open(survey_config_file_path, "r") as survey_config_file:
         survey_config = json.load(survey_config_file)
@@ -131,6 +136,15 @@ def main(argv):
     # save to csv
     output_df = output_df.ix[:, column_order]
     output_df.to_csv(output_file_path, header=False, index=False)
+
+    # split into current and previous period files
+    # unless split=False
+    if split is True:
+        previous_df = output_df[output_df['period'] == 201812]
+        current_df = output_df[output_df['period'] == 201903]
+
+        previous_df.to_json("fixtures/previous_out.json", orient="records")
+        current_df.to_json("fixtures/current_out.json", orient="records")
 
 
 if __name__ == "__main__":

@@ -35,6 +35,14 @@ The number from which the numbering of respondents should start above (the first
 
 Default: `10000000000`
 
+### -p / period_split
+Boolean value to determine if the output is to be split into two seperate files;
+    - current period
+    - previous period
+; to be saved in the fixtures directory. This is required for the AWS system where previous period is brought in at the Imputation stage.
+
+Default: `True`
+
 ## Requirements
 
     Python 3.7
@@ -69,7 +77,7 @@ The first 6 columns are required, you can have any number of `data_###` and `sum
 
 ### period
 
-    "periods": [201903, 201906]
+    "periods": [201812, 201903]
 
 This list of periods will determine how many periods each respondent will reply to, note that each enterprise will have between 1 and 5 respondents, each replaying for ALL periods. 
 
