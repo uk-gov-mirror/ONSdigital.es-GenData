@@ -78,10 +78,10 @@ def main(argv):
                 # add new row to the output
                 response_df = pd.DataFrame({
                     "period": period,
-                    "ruref": ruref,
+                    "responder_id": ruref,
                     "enterprise_ref": enterprise_ref,
-                    "enterprise_name": enterprise_name,
-                    "region": subsidiary_region
+                    "name": enterprise_name,
+                    "gor_code": subsidiary_region
                 }, index=[0])
 
                 # decide if non-respondent
@@ -132,6 +132,9 @@ def main(argv):
 
                 # add this response to output data frame
                 output_df = output_df.append(response_df, ignore_index=True)
+
+                if len(output_df.index) > 350:
+                    output_df['land_or_marine'][enterprise_index] = "M"
 
     # save to csv
     output_df = output_df.ix[:, column_order]
