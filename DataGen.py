@@ -145,8 +145,8 @@ def main(argv):
     # split into current and previous period files
     # unless split=False
     if split is True:
-        previous_df = output_df[output_df['period'] == 201812]
-        current_df = output_df[output_df['period'] == 201903]
+        previous_df = output_df[output_df['period'] == survey_config["periods"][0]]
+        current_df = output_df[output_df['period'] == survey_config["periods"][1]]
 
         previous_df.to_json("fixtures/previous_out.json", orient="records")
         current_df.to_json("fixtures/current_out.json", orient="records")
