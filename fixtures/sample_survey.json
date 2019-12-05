@@ -1,125 +1,71 @@
 {
     "data_frame_columns":[
         "period",
-        "responder_id",
+        "ruref",
         "response_type",
-        "gor_code",
+        "region",
         "enterprise_ref",
-        "name",
-        "Q601_asphalting_sand",
-        "Q602_building_soft_sand",
-        "Q603_concreting_sand",
-        "Q604_bituminous_gravel",
-        "Q605_concreting_gravel",
-        "Q606_other_gravel",
-        "Q607_constructional_fill",
-        "Q608_total",
-        "land_or_marine",
-        "manifest_rowcount",
-        "manifest_runid",
-        "manifest_system",
-        "manifest_timestamp"
+        "entterprise_name",
+        "data_0",
+        "data_1",
+        "data_2",
+        "data_3",
+        "sum_1",
+        "sum_2"
     ],
     "periods": [
         201812,
         201903
     ],
-    "number_of_enterprises":90,
+    "number_of_enterprises":10,
     "response_rate":0.5,
     "values": [
         {
-            "column_name": "Q601_asphalting_sand",
+            "column_name": "data_0",
             "probability_of_data": 0.5,
             "default": 0,
             "min": 10,
             "max": 1000
         },
         {
-            "column_name": "Q602_building_soft_sand",
+            "column_name": "data_1",
             "probability_of_data": 0.2,
             "default": 0,
             "min": 100,
             "max": 800
         },
         {
-            "column_name": "Q603_concreting_sand",
+            "column_name": "data_2",
             "probability_of_data": 0.8,
             "default": 0,
             "min": 1,
             "max_from": [
-                "Q601_asphalting_sand"
+                "data_0"
             ]
         },
         {
-            "column_name": "Q604_bituminous_gravel",
+            "column_name": "data_3",
             "probability_of_data": 1,
             "default": 0,
             "min": 0,
             "max_from": [
-                "Q602_building_soft_sand",
-                "Q603_concreting_sand"
+                "data_1",
+                "data_2"
             ]
-        },
-        {
-            "column_name": "Q605_concreting_gravel",
-            "probability_of_data": 0.5,
-            "default": 0,
-            "min": 10,
-            "max": 1000
-        },
-        {
-            "column_name": "Q606_other_gravel",
-            "probability_of_data": 0.2,
-            "default": 0,
-            "min": 100,
-            "max": 800
-        },
-        {
-            "column_name": "Q607_constructional_fill",
-            "probability_of_data": 0.8,
-            "default": 0,
-            "min": 1,
-            "max_from": [
-                "Q605_concreting_gravel"
-            ]
-        },
-        {
-            "column_name": "land_or_marine",
-            "probability_of_data": 1,
-            "default": "L"
-        },
-        {
-            "column_name": "manifest_rowcount",
-            "probability_of_data": 1,
-            "default": 815
-        },
-        {
-            "column_name": "manifest_runid",
-            "probability_of_data": 1,
-            "default": "SNG_201809_107_LG"
-        },
-        {
-            "column_name": "manifest_system",
-            "probability_of_data": 1,
-            "default": "BMI_SAND_AND_GRAVEL"
-        },
-        {
-            "column_name": "manifest_timestamp",
-            "probability_of_data": 1,
-            "default": "2018-11-20T17:14:41.541"
         }
     ],
     "sum_columns": [
         {   
-            "column_name": "Q608_total",
+            "column_name": "sum_1",
             "data":
-                {"Q601_asphalting_sand": "+",
-                "Q602_building_soft_sand": "+",
-                "Q603_concreting_sand": "+",
-                "Q604_bituminous_gravel": "+",
-                "Q605_concreting_gravel": "+",
-                "Q606_other_gravel": "+",
-                "Q607_constructional_fill": "+"}
+                {"data_0": "+",
+                "data_1":  "+"}
+        },
+        {
+            "column_name": "sum_2",
+            "data":
+                {"data_2": "+",
+                "data_3":  "-"}
         }
     ]
 }
