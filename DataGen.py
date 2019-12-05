@@ -10,7 +10,7 @@ import pandas as pd
 
 def main(argv):
 
-    survey_config_file_path = 'fixtures/sample_survey.json'
+    survey_config_file_path = 'fixtures/SynthData/SandAndGravelLand.json'
     region_list_file_path = 'fixtures/region_list.csv'
     enterprise_list_file_path = 'fixtures/enterprise_list.csv'
     output_file_path = 'fixtures/out.csv'
@@ -133,12 +133,14 @@ def main(argv):
                 # add this response to output data frame
                 output_df = output_df.append(response_df, ignore_index=True)
 
-                if len(output_df.index) > 350:
-                    output_df['land_or_marine'][enterprise_index] = "M"
-
     # save to csv
     output_df = output_df.ix[:, column_order]
-    output_df.to_csv(output_file_path, header=False, index=False)
+    output_df.to_csv(output_file_path, header=True, index=False)
+
+    # display last ruref
+    print("------------------------------------------------------")
+    print("Starting ruref for land/marine: " + str(ruref))
+    print("------------------------------------------------------")
 
     # split into current and previous period files
     # unless split=False

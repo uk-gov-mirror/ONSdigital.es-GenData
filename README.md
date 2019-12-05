@@ -9,6 +9,8 @@ To execute cd into the directory for this repo and execute:
 
 All arguments are optional as the default values are set to point at files within the repo. 
 
+Outputs the last ruref to the console for continuation, e.g. for creating land and marine data, which is to be passed in as an argument as detailed below.
+
 ## Arguments:
 ### -s / survey_file
 Path to the file which contains the configuration for the survey you want to generate. To make your own, look at the section about file structures below.
