@@ -20,25 +20,26 @@ def main(argv):
     split = True
 
     try:
-        opts, args = getopt.getopt(argv, "hs:r:e:o:i:p:", ["survey_file=", "region_file=",
-                                                           "enterprise_file=",
-                                                           "output_file=",
-                                                           "starting_id=",
-                                                           "period_split=",
-                                                           "current_file_path=",
-                                                           "previous_file_path="
-                                                           ])
+        opts, args = getopt.getopt(argv, "hs:r:e:o:i:p:v:c:", ["survey_file=",
+                                                                 "region_file=",
+                                                                 "enterprise_file=",
+                                                                 "output_file=",
+                                                                 "starting_id=",
+                                                                 "period_split=",
+                                                                 "current_file_path=",
+                                                                 "previous_file_path="
+                                                                 ])
     except getopt.GetoptError:
         print('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> ' +
               '-o <output_file> -i <starting_id> -p <period_split> ' +
-              '-pr <previous_file_path> -cr <current_file_path>')
+              '-v <previous_file_path> -c <current_file_path>')
         sys.exit(2)
 
     for opt, arg in opts:
         if opt == '-h':
             print('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> ' +
                   '-o <output_file> -i <starting_id> -p <period_split> ' +
-                  '-pr <previous_file_path> -cr <current_file_path>')
+                  '-v <previous_file_path> -c <current_file_path>')
             sys.exit()
         elif opt in ("-s", "--survey_file"):
             survey_config_file_path = arg
@@ -52,9 +53,9 @@ def main(argv):
             ruref = int(arg)
         elif opt in ("-p", "--period_split"):
             split = arg
-        elif opt in ("-pr", "--previous_file_path"):
+        elif opt in ("-v", "--previous_file_path"):
             previous_file_path = arg
-        elif opt in ("-cr", "--current_file_path"):
+        elif opt in ("-c", "--current_file_path"):
             current_file_path = arg
 
     with open(survey_config_file_path, "r") as survey_config_file:
