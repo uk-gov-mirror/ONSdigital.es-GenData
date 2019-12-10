@@ -5,15 +5,17 @@ This script allows the user to quickly generate a data response file for the BMI
 # Usage
 To execute cd into the directory for this repo and execute:
 
-    DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> -o <output_file> -i <starting_id>
+    DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> -o <output_file> -i <starting_id> -p <period_split>
 
 All arguments are optional as the default values are set to point at files within the repo. 
+
+Outputs the last ruref to the console for continuation, e.g. for creating land and marine data, which is to be passed in as an argument as detailed below.
 
 ## Arguments:
 ### -s / survey_file
 Path to the file which contains the configuration for the survey you want to generate. To make your own, look at the section about file structures below.
 
-Default: `fixtures/sample_survey.json`
+Default: `fixtures/configs/sample_survey.json`
 
 ### -r / region_file
 Path to the file which contains a comma and line separated list of region codes. To make your own, look at the section about file structures below.
@@ -26,14 +28,22 @@ Path to the file which contains a comma and line separated list of enterprise na
 Default: `fixtures/enterprise_list.csv`
 
 ### -o / output_file
-Path to target output file doesn't have to exist yet as this script will create (and overwrite) it. Should be in a .csv extension.
+Path to target output file doesn't have to exist yet as this script will create (and overwrite) it. (Should exclude file type.)
 
-Default: `fixtures/out.csv`
+Default: `fixtures/outputs/sample_out`
 
 ### -i / starting_id
 The number from which the numbering of respondents should start above (the first id will be 1 higher than the number you provide). The value must be a whole number, containing only digits 0-9 and it must not start with a '0'.
 
 Default: `10000000000`
+
+### -p / period_split
+Boolean value to determine if the output is to be split into two separate files;
+* current period
+* previous period
+
+to be saved in the fixtures/outputs directory.
+Default: `True`
 
 ## Requirements
 
@@ -48,7 +58,7 @@ with libraries:
     sys
 
 # Files
-## Survey config file:
+## Survey Config File:
 Is a json file with the following content required
 
     "data_frame_columns": [
@@ -69,7 +79,7 @@ The first 6 columns are required, you can have any number of `data_###` and `sum
 
 ### period
 
-    "periods": [201903, 201906]
+    "periods": [201812, 201903]
 
 This list of periods will determine how many periods each respondent will reply to, note that each enterprise will have between 1 and 5 respondents, each replaying for ALL periods. 
 
@@ -123,7 +133,7 @@ This is a list of sum columns you want to generate. The values provided in `colu
 | `column_name` | Name of the sum column, must be one of the names listed in `data_frame_columns`. |
 | `data`        | Dict of column names that will be included to create the sum and whether they should be added or subtracted. These names must be listed in the `data_frame_colums` list. |
 
-## Region List file
+## Region List File
 This must be a csv file listing region codes, usually just 2 letters. Each region is given its own line like this:
 
     AA,
@@ -134,17 +144,18 @@ This must be a csv file listing region codes, usually just 2 letters. Each regio
 Longer codes are allowed by this script but may not be compatible with the code run of the sample file produces.
 Note that there is no header for this table.
 
-## Enterprise List file
+## Enterprise List File
 This must be a csv file listing enterprise names and 10 digit enterprise ids. Each of those pairs is on its own row like this:
 
+    enterprise_name, enterprise_reference
     Apples with Alice, 1000000001
     Bannans by Bob, 1000000002
     ...
     Zucchinis from Zack, 9999999999
 
-Enterprise names have only been tested to contain letters a-zA-Z and spaces, but other characters may work too. The id has to be numeric made of 10 digits (0-9) and can not start with a '0'.
+Enterprise names have only been tested to contain letters a-z, A-Z and spaces, but other characters may work too. The id has to be numeric made of 10 digits (0-9) and can not start with a '0'.
 
-## Output file
-This will be produced by the script. Please specify a file name and location that the script can write to. 
+## Output File
+This will be produced by the script. Please specify a file name and location (excluding file type. e.g. 'fixtures/outputs/sand_gravel') that the script can write to. 
 
 **Warning:** this script **will overwrite** the file you specify, if making multiple files make sure to change this argument or make a copy of this file in a safe location between executions.
