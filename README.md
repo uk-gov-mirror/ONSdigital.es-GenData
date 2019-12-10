@@ -28,9 +28,9 @@ Path to the file which contains a comma and line separated list of enterprise na
 Default: `fixtures/enterprise_list.csv`
 
 ### -o / output_file
-Path to target output file doesn't have to exist yet as this script will create (and overwrite) it.
+Path to target output file doesn't have to exist yet as this script will create (and overwrite) it. (Should exclude file type.)
 
-Default: `fixtures/outputs/sample_out_`
+Default: `fixtures/outputs/sample_out`
 
 ### -i / starting_id
 The number from which the numbering of respondents should start above (the first id will be 1 higher than the number you provide). The value must be a whole number, containing only digits 0-9 and it must not start with a '0'.
