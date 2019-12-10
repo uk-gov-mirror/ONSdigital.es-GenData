@@ -1,8 +1,8 @@
-# es-GenData
+# DataGen.py
 
 This script allows the user to quickly generate a data response file for the BMI surveys. It generates this synthetic data based on input configuration and lists which can be specified in command-line arguments (listed below). 
 
-# Usage
+## Usage
 To execute cd into the directory for this repo and execute:
 
     DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> -o <output_file> -i <starting_id> -p <period_split>
@@ -63,7 +63,7 @@ Is a json file with the following content required
 
     "data_frame_columns": [
         "period",
-        "ruref",
+        "responder_id",
         "response_type",
         "region",
         "enterprise_ref",
@@ -81,7 +81,7 @@ The first 6 columns are required, you can have any number of `data_###` and `sum
 
     "periods": [201812, 201903]
 
-This list of periods will determine how many periods each respondent will reply to, note that each enterprise will have between 1 and 5 respondents, each replaying for ALL periods. 
+This list of two periods will determine how many periods each respondent will reply to, note that each enterprise will have between 1 and 5 respondents, each replaying for ALL periods. 
 
 ### number of enterprises
 
@@ -159,3 +159,37 @@ Enterprise names have only been tested to contain letters a-z, A-Z and spaces, b
 This will be produced by the script. Please specify a file name and location (excluding file type. e.g. 'fixtures/outputs/sand_gravel') that the script can write to. 
 
 **Warning:** this script **will overwrite** the file you specify, if making multiple files make sure to change this argument or make a copy of this file in a safe location between executions.
+<hr>
+
+# LookupGen.py
+This script allows the user to quickly generate a data loopup file for the BMI Sand And Gravel survey.
+## Usage
+To execute cd into the directory for this repo and execute:
+
+    LookupGen.py -i <input_file> -r <region_file> -c <county_file>
+
+## Arguments:
+### -i / input_file
+Path to the file which contains the input data for the survey you want to generate.
+Default: `fixtures/outputs/sample_out_all.csv`
+
+### -r / region_file
+Path to the file which contains a comma and line separated list of region codes. To make your own, look at the section about file structures below.
+
+Default: `fixtures/region_list.csv`
+
+### -c / county
+Path to the file which contains a lookup of gor_codes mapped to regions.
+Default: `fixtures/county_lookup.json`
+
+## Requirements
+
+    Python 3.7
+
+with libraries:
+
+    pandas
+    getopt
+    json
+    random
+    sys
