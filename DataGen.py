@@ -13,6 +13,7 @@ def main(argv):
     survey_config_file_path = 'fixtures/SynthData/SandAndGravelLand.json'
     region_list_file_path = 'fixtures/region_list.csv'
     enterprise_list_file_path = 'fixtures/enterprise_list.csv'
+    county_lookup_file = 'fixtures/county_lookup.json'
     previous_file_path = 'fixtures/previous_out.json'
     current_file_path = 'fixtures/current_out.json'
     output_file_path = 'fixtures/out.csv'
@@ -162,6 +163,12 @@ def main(argv):
 
         previous_df.to_json(previous_file_path, orient="records")
         current_df.to_json(current_file_path, orient="records")
+
+    # create_lookup(output_df, str(ruref), county_lookup_file)
+
+
+def create_lookup(input_df, ref_position, county_lookup):
+    
 
 
 if __name__ == "__main__":
