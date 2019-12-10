@@ -54,7 +54,7 @@ def main(argv):
         survey_config = json.load(survey_config_file)
 
     regions = pd.read_csv(region_list_file_path)
-    enterprises = pd.read_csv(enterprise_list_file_path, )
+    enterprises = pd.read_csv(enterprise_list_file_path)
 
     output_df = pd.DataFrame(columns=survey_config['data_frame_columns'])
     column_order = output_df.columns
