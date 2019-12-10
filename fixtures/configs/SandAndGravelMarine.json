@@ -5,7 +5,7 @@
         "response_type",
         "gor_code",
         "enterprise_ref",
-        "name",
+        "enterprise_name",
         "Q601_asphalting_sand",
         "Q602_building_soft_sand",
         "Q603_concreting_sand",

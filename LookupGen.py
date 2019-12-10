@@ -47,7 +47,6 @@ def main(argv):
     prepared_df = pd.merge(id_column, region_df[['region', 'gor_code']],
                            on='gor_code', how="left")
 
-    prepared_df.to_json("test_lookup.json", orient="records")
     prepared_df['county'] = prepared_df.apply(lambda x: get_county(x, county_df), axis=1)
 
     final_df = prepared_df[['responder_id', 'county']]

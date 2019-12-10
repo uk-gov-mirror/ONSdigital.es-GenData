@@ -82,7 +82,7 @@ def main(argv):
                     "period": period,
                     "responder_id": ruref,
                     "enterprise_ref": enterprise_ref,
-                    "name": enterprise_name,
+                    "enterprise_name": enterprise_name,
                     "gor_code": subsidiary_region
                 }, index=[0])
 
