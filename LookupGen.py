@@ -10,7 +10,7 @@ import pandas as pd
 
 def main(argv):
 
-    input_file_name = 'fixtures/outputs/sample_survey_all'
+    input_file_name = 'fixtures/outputs/sample_out_all'
     region_file_name = 'fixtures/region_lookup.csv'
     county_file_name = 'fixtures/county_lookup.json'
 
@@ -37,7 +37,6 @@ def main(argv):
 
     input_df = pd.read_csv(input_file_name + '.csv')
     region_df = pd.read_csv(region_file_name)
-    county_json = ''
 
     with open(county_file_name, "r") as county_file:
         county_json = json.load(county_file)
@@ -58,7 +57,7 @@ def main(argv):
 
 
 def get_county(row, county_df):
-    toggle = ''
+
     if row['land_or_marine'] == 'L':
         toggle = 'n'
     elif row['land_or_marine'] == 'M':
