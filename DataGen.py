@@ -157,7 +157,44 @@ def main(argv):
         current_df.to_json(output_file_path + "_current.json", orient="records")
 
 
-def create_lookup(input_df, ref_position, county_lookup):
+def create_lookup(argv):
+    try:
+        opts, args = getopt.getopt(argv, "hi:r:c", ["input_file=",
+                                                    "region_file=",
+                                                    "county_file=",
+                                                    ])
+    except getopt.GetoptError:
+        print('DataGen.py -i <input_file> -r <region_file> -c <county_file>')
+        sys.exit(2)
 
-    if __name__ == "__main__":
-        main(sys.argv[1:])
+    for opt, arg in opts:
+        if opt == '-h':
+            print('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> ' +
+                  '-o <output_file> -i <starting_id> -p <period_split>')
+            sys.exit()
+        elif opt in ("-i", "--input_file"):
+            input_file_name = arg
+        elif opt in ("-r", "--region_file"):
+            region_file_name = arg
+        elif opt in ("-c", "--county_file"):
+            county_file_name = arg
+
+    input_df = pd.read_csv(input_file_name + '.csv')
+    region_df = pd.read_csv(region_file_name)
+    county_df = pd.read_csv(county_file_name)
+
+    id_column = input_df[['responder_id', 'gor_code']].unique()
+    prepared_df = pd.merge(id_column, region_df['region'],
+                           on='gor_code', how="left")
+
+    prepared_df['county'] = prepared_df.apply(lambda x: get_county(x, county_df), axis=1)
+
+    final_df = prepared_df[['responder_id', 'county']]
+    final_df.to_csv(input_file_name + "_lookup.csv", header=True, index=False)
+    final_df.to_json(input_file_name + "_lookup.json", orient="records")
+
+
+def get_county(row, county_df):
+    county_list = county_df['city_code'][county_df['region'] == row['region']]\
+        .unique().tolist()
+    return random.choice(county_list)
