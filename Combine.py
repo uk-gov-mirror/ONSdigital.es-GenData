@@ -9,7 +9,7 @@ def main(argv):
 
     marine_file_name = 'Sandy_Marine_all.csv'
     land_file_name = 'Sandy_Land_all.csv'
-    out_file_name = 'Sandy_Merged.csv'
+    out_file_name = 'Sandy_Merged_all.csv'
 
     try:
         opts, args = getopt.getopt(argv, "hm:l:o", ["marine_file=",
