@@ -10,26 +10,22 @@ import pandas as pd
 
 def main(argv):
 
-    survey_config_file_path = 'fixtures/SynthData/SandAndGravelLand.json'
+    survey_config_file_path = 'fixtures/configs/sample_survey.json'
     region_list_file_path = 'fixtures/region_list.csv'
     enterprise_list_file_path = 'fixtures/enterprise_list.csv'
     county_lookup_file = 'fixtures/county_lookup.json'
-    previous_file_path = 'fixtures/previous_out.json'
-    current_file_path = 'fixtures/current_out.json'
-    output_file_path = 'fixtures/out.csv'
+    output_file_path = 'fixtures/outputs/sample_out'
     ruref = 10000000000
     split = True
 
     try:
-        opts, args = getopt.getopt(argv, "hs:r:e:o:i:p:v:c:", ["survey_file=",
-                                                                 "region_file=",
-                                                                 "enterprise_file=",
-                                                                 "output_file=",
-                                                                 "starting_id=",
-                                                                 "period_split=",
-                                                                 "current_file_path=",
-                                                                 "previous_file_path="
-                                                                 ])
+        opts, args = getopt.getopt(argv, "hs:r:e:o:i:p", ["survey_file=",
+                                                          "region_file=",
+                                                          "enterprise_file=",
+                                                          "output_file=",
+                                                          "starting_id=",
+                                                          "period_split="
+                                                          ])
     except getopt.GetoptError:
         print('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> ' +
               '-o <output_file> -i <starting_id> -p <period_split> ' +
@@ -39,8 +35,7 @@ def main(argv):
     for opt, arg in opts:
         if opt == '-h':
             print('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> ' +
-                  '-o <output_file> -i <starting_id> -p <period_split> ' +
-                  '-v <previous_file_path> -c <current_file_path>')
+                  '-o <output_file> -i <starting_id> -p <period_split>')
             sys.exit()
         elif opt in ("-s", "--survey_file"):
             survey_config_file_path = arg
@@ -54,10 +49,6 @@ def main(argv):
             ruref = int(arg)
         elif opt in ("-p", "--period_split"):
             split = arg
-        elif opt in ("-v", "--previous_file_path"):
-            previous_file_path = arg
-        elif opt in ("-c", "--current_file_path"):
-            current_file_path = arg
 
     with open(survey_config_file_path, "r") as survey_config_file:
         survey_config = json.load(survey_config_file)
@@ -68,27 +59,26 @@ def main(argv):
     output_df = pd.DataFrame(columns=survey_config['data_frame_columns'])
     column_order = output_df.columns
 
-    # generate the required enterprises
+    # Generate the required enterprises.
     for enterprise_index in range(0, min(survey_config['number_of_enterprises'],
                                          len(enterprises.index))):
-        # pick enterprise name and id from list file
+        # Pick enterprise name and id from list file.
         enterprise_name = enterprises.iloc[enterprise_index, 0]
         enterprise_ref = enterprises.iloc[enterprise_index, 1]
 
-        # decide on a number of subsidiaries the enterprise has
+        # Decide on a number of subsidiaries the enterprise has.
         number_of_subsidiaries = random.randrange(1, 5)
 
-        # for each subsidiary
+        # For each subsidiary.
         for subsidiary_index in range(0, number_of_subsidiaries):
-            # generate a ruref
             ruref += 1
 
-            # pick a region from list file
+            # Pick a region from list file.
             subsidiary_region = regions.iloc[random.randrange(0, len(regions.index)), 0]
 
-            # for each period
+            # For each period.
             for period in survey_config['periods']:
-                # add new row to the output
+                # Add new row to the output.
                 response_df = pd.DataFrame({
                     "period": period,
                     "responder_id": ruref,
@@ -97,31 +87,31 @@ def main(argv):
                     "gor_code": subsidiary_region
                 }, index=[0])
 
-                # decide if non-respondent
+                # Decide if non-respondent.
                 if random.random() > survey_config['response_rate']:
                     response_df['response_type'] = 1
 
                     for value in survey_config['values']:
                         response_df[value['column_name']] = value['default']
 
-                    # calculate all sum columns
+                    # Calculate all sum columns.
                     for sum_column in survey_config['sum_columns']:
                         response_df[sum_column['column_name']] = 0
                 else:
                     response_df['response_type'] = 2
 
-                    # for each value in config
+                    # For each value in config.
                     for value in survey_config['values']:
-                        # if value should be 0
+                        # If value should be 0.
                         new_value = value['default']
 
-                        # should value be a valid response
+                        # Should value be a valid response.
                         if random.random() <= value['probability_of_data']:
-                            # generate a rand value from range in config
+                            # Generate a random value from a range in config.
                             if 'max' in value:
                                 new_value = random.randrange(value['min'], value['max'])
-                            # generate a rang value from a range and
-                            # the sum of specified columns
+                            # Generate a random value from a range and
+                            # the sum of specified columns.
                             elif 'max_from' in value:
                                 max_value = 0
                                 for aggregated_column in value['max_from']:
@@ -130,10 +120,10 @@ def main(argv):
                                 if max_value > value['min']:
                                     new_value = random.randrange(value['min'], max_value)
 
-                        # save the value generaed above in the current response
+                        # Save the value generated above in the current response.
                         response_df[value['column_name']] = new_value
 
-                    # calculate all sum columns
+                    # Calculate all sum columns.
                     for sum_column in survey_config['sum_columns']:
                         new_sum = 0
                         for data_column in sum_column['data']:
@@ -143,33 +133,31 @@ def main(argv):
                                 new_sum -= response_df.iloc[0][data_column]
                         response_df[sum_column['column_name']] = new_sum
 
-                # add this response to output data frame
+                # Add this response to output DataFrame.
                 output_df = output_df.append(response_df, ignore_index=True)
 
-    # save to csv
     output_df = output_df.ix[:, column_order]
-    output_df.to_csv(output_file_path, header=True, index=False)
+    output_df.to_csv(output_file_path + "_all.csv", header=True, index=False)
+    output_df.to_json(output_file_path + "_all.json", orient="records")
 
-    # display last ruref
+    # Display last ruref.
     print("------------------------------------------------------")
-    print("Starting ruref for land/marine: " + str(ruref))
+    print("Final RU Reference: " + str(ruref))
     print("------------------------------------------------------")
 
-    # split into current and previous period files
-    # unless split=False
+    # Split into current and previous period files.
     if split is True:
         previous_df = output_df[output_df['period'] == survey_config["periods"][0]]
         current_df = output_df[output_df['period'] == survey_config["periods"][1]]
 
-        previous_df.to_json(previous_file_path, orient="records")
-        current_df.to_json(current_file_path, orient="records")
+        previous_df.to_csv(output_file_path + "_previous.csv", header=True, index=False)
+        previous_df.to_json(output_file_path + "_previous.json", orient="records")
 
-    # create_lookup(output_df, str(ruref), county_lookup_file)
+        current_df.to_csv(output_file_path + "_current.csv", header=True, index=False)
+        current_df.to_json(output_file_path + "_current.json", orient="records")
 
 
 def create_lookup(input_df, ref_position, county_lookup):
-    
 
-
-if __name__ == "__main__":
-    main(sys.argv[1:])
+    if __name__ == "__main__":
+        main(sys.argv[1:])
