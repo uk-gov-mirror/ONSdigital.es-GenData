@@ -1,11 +1,12 @@
 {
     "data_frame_columns":[
         "period",
-        "ruref",
+        "responder_id",
         "response_type",
-        "region",
+        "gor_code",
         "enterprise_ref",
         "enterprise_name",
+        "land_or_marine",
         "data_0",
         "data_1",
         "data_2",
@@ -20,6 +21,11 @@
     "number_of_enterprises":10,
     "response_rate":0.5,
     "values": [
+        {
+            "column_name": "land_or_marine",
+            "probability_of_data": 0,
+            "default": "L"
+        },
         {
             "column_name": "data_0",
             "probability_of_data": 0.5,

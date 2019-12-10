@@ -12,8 +12,7 @@ def main(argv):
 
     survey_config_file_path = 'fixtures/configs/sample_survey.json'
     region_list_file_path = 'fixtures/region_list.csv'
-    enterprise_list_file_path = 'fixtures/enterprise_list.csv'
-    county_lookup_file = 'fixtures/county_lookup.json'
+    enterprise_list_file_path = 'fixtures/enterprise_list_1.csv'
     output_file_path = 'fixtures/outputs/sample_out'
     ruref = 10000000000
     split = True
@@ -83,7 +82,7 @@ def main(argv):
                     "period": period,
                     "responder_id": ruref,
                     "enterprise_ref": enterprise_ref,
-                    "name": enterprise_name,
+                    "enterprise_name": enterprise_name,
                     "gor_code": subsidiary_region
                 }, index=[0])
 
@@ -157,7 +156,5 @@ def main(argv):
         current_df.to_json(output_file_path + "_current.json", orient="records")
 
 
-def create_lookup(input_df, ref_position, county_lookup):
-
-    if __name__ == "__main__":
-        main(sys.argv[1:])
+if __name__ == "__main__":
+    main(sys.argv[1:])

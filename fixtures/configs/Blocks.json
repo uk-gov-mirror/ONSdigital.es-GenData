@@ -1,9 +1,9 @@
 {
     "data_frame_columns":[
         "period",
-        "ruref",
+        "responder_id",
         "response_type",
-        "region",
+        "gor_code",
         "enterprise_ref",
         "enterprise_name",
         "data_0",
