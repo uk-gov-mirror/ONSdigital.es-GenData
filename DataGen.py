@@ -63,7 +63,8 @@ def main(argv):
         enterprise_ref = enterprises.iloc[enterprise_index, 1]
 
         # Decide on a number of subsidiaries the enterprise has.
-        number_of_subsidiaries = random.randrange(1, survey_config['max_subsidiaries'])
+        number_of_subsidiaries = random.randrange(survey_config['min_subsidiaries'],
+                                                  survey_config['max_subsidiaries'])
 
         # For each subsidiary.
         for subsidiary_index in range(0, number_of_subsidiaries):
