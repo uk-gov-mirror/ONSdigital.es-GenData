@@ -6,9 +6,9 @@ import pandas as pd
 
 def main(argv):
 
-    marine_file_name = 'Sandy_Marine_all.csv'
-    land_file_name = 'Sandy_Land_all.csv'
-    out_file_name = 'Sandy_Merged_all.csv'
+    marine_file_name = 'fixtures/outputs/sample_out_current.csv'
+    land_file_name = 'fixtures/outputs/sample_out_previous.csv'
+    out_file_name = 'fixtures/outputs/sample_merged.csv'
 
     try:
         opts, args = getopt.getopt(argv, "hm:l:o", ["marine_file=",
