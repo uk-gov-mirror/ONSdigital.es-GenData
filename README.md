@@ -193,3 +193,30 @@ with libraries:
     json
     random
     sys
+
+# Combine.py
+This script allows the user to quickly generate a data loopup file for the BMI Sand And Gravel survey.
+## Usage
+To execute cd into the directory for this repo and execute:
+
+    Combine.py -m <marine_file> -l <land_file> -o <out_file>
+
+## Arguments:
+### -m / marine_file
+Default: `fixtures/outputs/sample_out_current.csv`
+
+### -l / land_file
+Default: `fixtures/outputs/sample_out_previous.csv`
+
+### -o / out_file
+Default: `fixtures/outputs/sample_merged.csv`
+
+## Requirements
+
+    Python 3.7
+
+with libraries:
+
+    pandas
+    getopt
+    sys

@@ -30,7 +30,7 @@
  {
    "county_name": "Blueberry",
    "region": 2,
-   "county": 9,"marine":"n" },
+   "county": 9,"marine":"y" },
  {
    "county_name": "Raspberry",
    "region": 3,
@@ -74,7 +74,7 @@
  {
    "county_name": "Melon",
    "region": 5,
-   "county": 65,"marine":"n" },
+   "county": 65,"marine":"y" },
  {
    "county_name": "Apricot",
    "region": 6,
@@ -94,7 +94,7 @@
  {
    "county_name": "Cherry",
    "region": 6,
-   "county": 14,"marine":"n" },
+   "county": 14,"marine":"y" },
  {
    "county_name": "Coconut",
    "region": 7,
@@ -222,7 +222,7 @@
  {
    "county_name": "Currant",
    "region": 12,
-   "county": 57,"marine":"n" },
+   "county": 57,"marine":"y" },
  {
    "county_name": "Boysenberry",
    "region": 12,

@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 import getopt
 import json
 import random
@@ -20,13 +18,12 @@ def main(argv):
                                                     "county_file=",
                                                     ])
     except getopt.GetoptError:
-        print('DataGen.py -i <input_file> -r <region_file> -c <county_file>')
+        print('LookupGen.py -i <input_file> -r <region_file> -c <county_file>')
         sys.exit(2)
 
     for opt, arg in opts:
         if opt == '-h':
-            print('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> ' +
-                  '-o <output_file> -i <starting_id> -p <period_split>')
+            print('LookupGen.py -i <input_file> -r <region_file> -c <county_file>')
             sys.exit()
         elif opt in ("-i", "--input_file"):
             input_file_name = arg
