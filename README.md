@@ -203,13 +203,13 @@ To execute cd into the directory for this repo and execute:
 
 ## Arguments:
 ### -m / marine_file
-Default: `Sandy_Marine_all.csv`
+Default: `fixtures/outputs/sample_out_current.csv`
 
 ### -l / land_file
-Default: `Sandy_Land_all.csv`
+Default: `fixtures/outputs/sample_out_previous.csv`
 
 ### -o / out_file
-Default: `Sandy_Merged.csv`
+Default: `fixtures/outputs/sample_merged.csv`
 
 ## Requirements
 
