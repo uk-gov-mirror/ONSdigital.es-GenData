@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 import getopt
 import json
 import random
