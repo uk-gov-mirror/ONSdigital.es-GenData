@@ -85,9 +85,15 @@ This list of two periods will determine how many periods each respondent will re
 
 ### number of enterprises
 
-    "number_of_enterprises": 10
+    "number_of_enterprises": 10,
+    "min_subsidiaries":1,
+    "max_subsidiaries":5
 
 This is the number of unique enterprises with names to generate, not that if you require more than 30 you will need to supply your own enterpriseList.csv file as the default only has 30 entries. The software will automatically cap at this number. Names are assigned sequentially.
+
+You may also specify the min/max number of responders that each enterprise may have.
+
+NOTE: The code chooses a random number between the minimum and the maximum.
 
 ### response rate
 

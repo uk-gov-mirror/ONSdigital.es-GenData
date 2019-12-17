@@ -25,8 +25,7 @@ def main(argv):
                                                           ])
     except getopt.GetoptError:
         print('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> ' +
-              '-o <output_file> -i <starting_id> -p <period_split> ' +
-              '-v <previous_file_path> -c <current_file_path>')
+              '-o <output_file> -i <starting_id> -p <period_split>')
         sys.exit(2)
 
     for opt, arg in opts:
@@ -64,7 +63,8 @@ def main(argv):
         enterprise_ref = enterprises.iloc[enterprise_index, 1]
 
         # Decide on a number of subsidiaries the enterprise has.
-        number_of_subsidiaries = random.randrange(1, 5)
+        number_of_subsidiaries = random.randrange(survey_config['min_subsidiaries'],
+                                                  survey_config['max_subsidiaries'])
 
         # For each subsidiary.
         for subsidiary_index in range(0, number_of_subsidiaries):

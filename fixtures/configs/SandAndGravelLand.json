@@ -25,6 +25,8 @@
         201809
     ],
     "number_of_enterprises":70,
+    "min_subsidiaries":1,
+    "max_subsidiaries":5,
     "response_rate":0.9,
     "values": [
         {
