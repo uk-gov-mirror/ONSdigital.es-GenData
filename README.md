@@ -119,6 +119,8 @@ The list of value columns to generate. Each is a dictionary with the following p
 
 *2** *The columns to consider must be listed **before** the one with a `max_from` field*
 
+NOTE: If you want every row to have the default value you should set the `probability_of_data` to `0` to specify that no data will be calculated.
+
 ### sum columns
 
     "sum_columns": [

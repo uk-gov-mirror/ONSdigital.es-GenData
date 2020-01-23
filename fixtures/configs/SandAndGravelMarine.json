@@ -85,22 +85,22 @@
         },
         {
             "column_name": "manifest_rowcount",
-            "probability_of_data": 1,
+            "probability_of_data": 0,
             "default": 815
         },
         {
             "column_name": "manifest_runid",
-            "probability_of_data": 1,
+            "probability_of_data": 0,
             "default": "SNG_201809_107_LG"
         },
         {
             "column_name": "manifest_system",
-            "probability_of_data": 1,
+            "probability_of_data": 0,
             "default": "BMI_SAND_AND_GRAVEL"
         },
         {
             "column_name": "manifest_timestamp",
-            "probability_of_data": 1,
+            "probability_of_data": 0,
             "default": "2018-11-20T17:14:41.541"
         }
     ],
