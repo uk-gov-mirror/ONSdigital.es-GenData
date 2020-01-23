@@ -96,7 +96,7 @@ def main(argv):
                         response_df[sum_column['column_name']] = 0
                 else:
                     response_df['response_type'] = 2
-
+                    all_default = True
                     # For each value in config.
                     for value in survey_config['values']:
                         # If value should be 0.
@@ -104,6 +104,7 @@ def main(argv):
 
                         # Should value be a valid response.
                         if random.random() <= value['probability_of_data']:
+                            all_default = False
                             # Generate a random value from a range in config.
                             if 'max' in value:
                                 new_value = random.randrange(value['min'], value['max'])
@@ -119,6 +120,9 @@ def main(argv):
 
                         # Save the value generated above in the current response.
                         response_df[value['column_name']] = new_value
+
+                    if all_default:
+                        response_df['response_type'] = 1
 
                     # Calculate all sum columns.
                     for sum_column in survey_config['sum_columns']:
