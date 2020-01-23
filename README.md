@@ -155,7 +155,7 @@ Note that there is no header for this table.
 ## Enterprise List File
 This must be a csv file listing enterprise names and 10 digit enterprise ids. Each of those pairs is on its own row like this:
 
-    enterprise_name, enterprise_referenceerence
+    enterprise_name, enterprise_reference
     Apples with Alice, 1000000001
     Bannans by Bob, 1000000002
     ...
