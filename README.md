@@ -66,7 +66,7 @@ Is a json file with the following content required
         "responder_id",
         "response_type",
         "region",
-        "enterprise_ref",
+        "enterprise_reference",
         "enterprise_name",
         "data_0",
         "data_1",
@@ -153,7 +153,7 @@ Note that there is no header for this table.
 ## Enterprise List File
 This must be a csv file listing enterprise names and 10 digit enterprise ids. Each of those pairs is on its own row like this:
 
-    enterprise_name, enterprise_reference
+    enterprise_name, enterprise_referenceerence
     Apples with Alice, 1000000001
     Bannans by Bob, 1000000002
     ...

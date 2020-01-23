@@ -4,7 +4,7 @@
         "responder_id",
         "response_type",
         "gor_code",
-        "enterprise_ref",
+        "enterprise_reference",
         "enterprise_name",
         "Q601_asphalting_sand",
         "Q602_building_soft_sand",

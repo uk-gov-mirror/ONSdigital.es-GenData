@@ -60,7 +60,7 @@ def main(argv):
                                          len(enterprises.index))):
         # Pick enterprise name and id from list file.
         enterprise_name = enterprises.iloc[enterprise_index, 0]
-        enterprise_ref = enterprises.iloc[enterprise_index, 1]
+        enterprise_reference = enterprises.iloc[enterprise_index, 1]
 
         # Decide on a number of subsidiaries the enterprise has.
         number_of_subsidiaries = random.randrange(survey_config['min_subsidiaries'],
@@ -79,7 +79,7 @@ def main(argv):
                 response_df = pd.DataFrame({
                     "period": period,
                     "responder_id": ruref,
-                    "enterprise_ref": enterprise_ref,
+                    "enterprise_reference": enterprise_reference,
                     "enterprise_name": enterprise_name,
                     "gor_code": subsidiary_region
                 }, index=[0])
