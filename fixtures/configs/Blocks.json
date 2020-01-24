@@ -4,131 +4,133 @@
         "responder_id",
         "response_type",
         "gor_code",
-        "enterprise_ref",
+        "enterprise_reference",
         "enterprise_name",
-        "data_0",
-        "data_1",
-        "data_2",
-        "data_3",
-        "data_4",
-        "data_5",
-        "data_6",
-        "data_7",
-        "data_8",
-        "sum_0",
-        "sum_1",
-        "sum_2",
-        "data_9",
-        "data_10"
+        "opening_stock_dense",
+        "opening_stock_lightweight",
+        "opening_stock_aerated",
+        "produced_dense",
+        "produced_lightweight",
+        "produced_aerated",
+        "delivered_dense",
+        "delivered_lightweight",
+        "delivered_aerated",
+        "closing_stock_dense",
+        "closing_stock_lightweight",
+        "closing_stock_aerated",
+        "factor_square_to_cube",
+        "factor_cube_to_square",
+        "survey"
     ],
     "periods": [
-        201809,
-        201808
+        201812,
+        201901
     ],
-    "number_of_enterprises":10,
-    "min_subsidiaries":1,
-    "max_subsidiaries":5,
+    "number_of_enterprises":30,
+    "min_subsidiaries":2,
+    "max_subsidiaries":4,
     "response_rate":0.9,
     "values": [
         {
-            "column_name": "data_0",
+            "column_name": "opening_stock_dense",
             "probability_of_data": 0.87,
             "default": 0,
             "min": 450,
             "max": 213000
         },
         {
-            "column_name": "data_1",
+            "column_name": "opening_stock_lightweight",
             "probability_of_data": 0.62,
             "default": 0,
             "min": 100,
             "max": 350000
         },
         {
-            "column_name": "data_2",
+            "column_name": "opening_stock_aerated",
             "probability_of_data": 0.09,
             "default": 0,
             "min": 100,
             "max": 70000
         },
         {
-            "column_name": "data_3",
+            "column_name": "produced_dense",
             "probability_of_data": 0.85,
             "default": 0,
             "min": 250,
             "max": 222000
         },
         {
-            "column_name": "data_4",
+            "column_name": "produced_lightweight",
             "probability_of_data": 0.59,
             "default": 0,
             "min": 50,
             "max": 440000
         },
         {
-            "column_name": "data_5",
+            "column_name": "produced_aerated",
             "probability_of_data": 0.1,
             "default": 0,
             "min": 7000,
             "max": 80000
         },
         {
-            "column_name": "data_6",
+            "column_name": "delivered_dense",
             "probability_of_data": 0.87,
             "default": 0,
             "min": 200,
-            "max_from": ["data_0", "data_3"]
+            "max_from": ["opening_stock_dense", "produced_dense"]
         },
         {
-            "column_name": "data_7",
+            "column_name": "delivered_lightweight",
             "probability_of_data": 0.60,
             "default": 0,
             "min": 10,
-            "max_from": ["data_1", "data_4"]
+            "max_from": ["opening_stock_lightweight", "produced_lightweight"]
         },
         {
-            "column_name": "data_8",
+            "column_name": "delivered_aerated",
             "probability_of_data": 0.1,
             "default": 0,
             "min": 7000,
-            "max_from": ["data_2", "data_5"]
+            "max_from": ["opening_stock_aerated", "produced_aerated"]
         },
         {
-            "column_name": "data_9",
+            "column_name": "factor_square_to_cube",
             "probability_of_data": 0,
-            "default": 10,
-            "min": 0,
-            "max": 1
+            "default": 10
         },
         {
-            "column_name": "data_10",
+            "column_name": "factor_cube_to_square",
             "probability_of_data": 0,
-            "default": 10,
-            "min": 0,
-            "max": 1
+            "default": 10
+        },
+        {
+            "column_name": "survey",
+            "probability_of_data": 0,
+            "default": "073"
         }
     ],
     "sum_columns": [
-        {   
-            "column_name": "sum_0",
+        {
+            "column_name": "closing_stock_dense",
             "data":
-                {"data_0": "+",
-                "data_3": "+",
-                "data_6": "-"}
+                {"opening_stock_dense": "+",
+                "produced_dense": "+",
+                "delivered_dense": "-"}
         },
         {
-            "column_name": "sum_1",
+            "column_name": "closing_stock_lightweight",
             "data":
-                {"data_1": "+",
-                "data_4": "+",
-                "data_7": "-"}
+                {"opening_stock_lightweight": "+",
+                "produced_lightweight": "+",
+                "delivered_lightweight": "-"}
         },
         {
-            "column_name": "sum_2",
+            "column_name": "closing_stock_aerated",
             "data":
-                {"data_2": "+",
-                "data_5": "+",
-                "data_8": "-"}
+                {"opening_stock_aerated": "+",
+                "produced_aerated": "+",
+                "delivered_aerated": "-"}
         }
     ]
 }

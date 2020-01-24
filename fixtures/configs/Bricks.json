@@ -4,363 +4,369 @@
         "responder_id",
         "response_type",
         "gor_code",
-        "enterprise_ref",
+        "enterprise_reference",
         "enterprise_name",
-        "data_0",
-        "data_1",
-        "data_2",
-        "data_3",
-        "data_4",
-        "data_5",
-        "data_6",
-        "data_7",
-        "data_8",
-        "sum_0",
-        "data_9",
-        "data_10",
-        "data_11",
-        "data_12",
-        "data_13",
-        "data_14",
-        "data_15",
-        "data_16",
-        "data_17",
-        "sum_1",
-        "data_18",
-        "data_19",
-        "data_20",
-        "data_21",
-        "data_22",
-        "data_23",
-        "data_24",
-        "data_25",
-        "data_26",
-        "sum_2",
-        "sum_3",
-        "sum_4",
-        "sum_5",
-        "sum_6",
-        "sum_7",
-        "sum_8",
-        "sum_9",
-        "sum_10",
-        "sum_11",
-        "sum_12"
+        "clay_opening_stock_commons",
+        "clay_opening_stock_facings",
+        "clay_opening_stock_engineering",
+        "concrete_opening_stock_commons",
+        "concrete_opening_stock_facings",
+        "concrete_opening_stock_engineering",
+        "sandlime_opening_stock_commons",
+        "sandlime_opening_stock_facings",
+        "sandlime_opening_stock_engineering",
+        "total_opening_stock",
+        "clay_produced_commons",
+        "clay_produced_facings",
+        "clay_produced_engineering",
+        "concrete_produced_commons",
+        "concrete_produced_facings",
+        "concrete_produced_engineering",
+        "sandlime_produced_commons",
+        "sandlime_produced_facings",
+        "sandlime_produced_engineering",
+        "total_produced",
+        "clay_deliveries_commons",
+        "clay_deliveries_facings",
+        "clay_deliveries_engineering",
+        "concrete_deliveries_commons",
+        "concrete_deliveries_facings",
+        "concrete_deliveries_engineering",
+        "sandlime_deliveries_commons",
+        "sandlime_deliveries_facings",
+        "sandlime_deliveries_engineering",
+        "total_deliveries",
+        "clay_closing_stock_commons",
+        "clay_closing_stock_facings",
+        "clay_closing_stock_engineering",
+        "concrete_closing_stock_commons",
+        "concrete_closing_stock_facings",
+        "concrete_closing_stock_engineering",
+        "sandlime_closing_stock_commons",
+        "sandlime_closing_stock_facings",
+        "sandlime_closing_stock_engineering",
+        "total_closing_stock",
+        "survey"
     ],
     "periods": [
         201812,
         201901
     ],
-    "number_of_enterprises":10,
-    "min_subsidiaries":1,
-    "max_subsidiaries":5,
+    "number_of_enterprises":25,
+    "min_subsidiaries":2,
+    "max_subsidiaries":4,
     "response_rate":0.9,
     "values": [
         {
-            "column_name": "data_0",
+            "column_name": "clay_opening_stock_commons",
             "probability_of_data": 0.51,
             "default": 0,
             "min": 1,
             "max": 8000
         },
         {
-            "column_name": "data_1",
+            "column_name": "clay_opening_stock_facings",
             "probability_of_data": 0.8,
             "default": 0,
             "min": 1,
             "max": 30000
         },
         {
-            "column_name": "data_2",
+            "column_name": "clay_opening_stock_engineering",
             "probability_of_data": 0.34,
             "default": 0,
             "min": 1,
             "max": 4000
         },
         {
-            "column_name": "data_3",
+            "column_name": "concrete_opening_stock_commons",
             "probability_of_data": 0.14,
             "default": 0,
             "min": 1,
             "max": 5000
         },
         {
-            "column_name": "data_4",
+            "column_name": "concrete_opening_stock_facings",
             "probability_of_data": 0.10,
             "default": 0,
             "min": 1,
             "max": 2000
         },
         {
-            "column_name": "data_5",
+            "column_name": "concrete_opening_stock_engineering",
             "probability_of_data": 0.08,
             "default": 0,
             "min": 1,
             "max": 500
         },
         {
-            "column_name": "data_6",
+            "column_name": "sandlime_opening_stock_commons",
             "probability_of_data": 0,
             "default": 0,
             "min": 0,
             "max": 0
         },
         {
-            "column_name": "data_7",
+            "column_name": "sandlime_opening_stock_facings",
             "probability_of_data": 0,
             "default": 0,
             "min": 0,
             "max": 0
         },
         {
-            "column_name": "data_8",
+            "column_name": "sandlime_opening_stock_engineering",
             "probability_of_data": 0,
             "default": 0,
             "min": 0,
             "max": 0
         },
         {
-            "column_name": "data_9",
+            "column_name": "clay_produced_commons",
             "probability_of_data": 0.38,
             "default": 0,
             "min": 1,
             "max": 1000
         },
         {
-            "column_name": "data_10",
+            "column_name": "clay_produced_facings",
             "probability_of_data": 0.75,
             "default": 0,
             "min": 1,
             "max": 11000
         },
         {
-            "column_name": "data_11",
+            "column_name": "clay_produced_engineering",
             "probability_of_data": 0.19,
             "default": 0,
             "min": 1,
             "max": 6000
         },
         {
-            "column_name": "data_12",
+            "column_name": "concrete_produced_commons",
             "probability_of_data": 0.12,
             "default": 0,
             "min": 1,
             "max": 3000
         },
         {
-            "column_name": "data_13",
+            "column_name": "concrete_produced_facings",
             "probability_of_data": 0.09,
             "default": 0,
             "min": 1,
             "max": 3000
         },
         {
-            "column_name": "data_14",
+            "column_name": "concrete_produced_engineering",
             "probability_of_data": 0.03,
             "default": 0,
             "min": 1,
             "max": 100
         },
         {
-            "column_name": "data_15",
+            "column_name": "sandlime_produced_commons",
             "probability_of_data": 0,
             "default": 0,
             "min": 0,
             "max": 0
         },
         {
-            "column_name": "data_16",
+            "column_name": "sandlime_produced_facings",
             "probability_of_data": 0,
             "default": 0,
             "min": 0,
             "max": 0
         },
         {
-            "column_name": "data_17",
+            "column_name": "sandlime_produced_engineering",
             "probability_of_data": 0,
             "default": 0,
             "min": 0,
             "max": 0
         },
         {
-            "column_name": "data_18",
+            "column_name": "clay_deliveries_commons",
             "probability_of_data": 0.39,
             "default": 0,
             "min": 1,
-            "max_from": ["data_0", "data_9"]
+            "max_from": ["clay_opening_stock_commons", "clay_produced_commons"]
         },
         {
-            "column_name": "data_19",
+            "column_name": "clay_deliveries_facings",
             "probability_of_data": 0.80,
             "default": 0,
             "min": 1,
-            "max_from": ["data_1", "data_10"]
+            "max_from": ["clay_opening_stock_facings", "clay_produced_facings"]
         },
         {
-            "column_name": "data_20",
+            "column_name": "clay_deliveries_engineering",
             "probability_of_data": 0.22,
             "default": 0,
             "min": 1,
-            "max_from": ["data_2", "data_11"]
+            "max_from": ["clay_opening_stock_engineering", "clay_produced_engineering"]
         },
         {
-            "column_name": "data_21",
+            "column_name": "concrete_deliveries_commons",
             "probability_of_data": 0.13,
             "default": 0,
             "min": 1,
-            "max_from": ["data_3", "data_12"]
+            "max_from": ["concrete_opening_stock_commons", "concrete_produced_commons"]
         },
         {
-            "column_name": "data_22",
+            "column_name": "concrete_deliveries_facings",
             "probability_of_data": 0.10,
             "default": 0,
             "min": 1,
-            "max_from": ["data_4", "data_13"]
+            "max_from": ["concrete_opening_stock_facings", "concrete_produced_facings"]
         },
         {
-            "column_name": "data_23",
+            "column_name": "concrete_deliveries_engineering",
             "probability_of_data": 0.05,
             "default": 0,
             "min": 1,
-            "max_from": ["data_5", "data_14"]
+            "max_from": ["concrete_opening_stock_engineering", "concrete_produced_engineering"]
         },
         {
-            "column_name": "data_24",
+            "column_name": "sandlime_deliveries_commons",
             "probability_of_data": 0,
             "default": 0,
             "min": 0,
-            "max_from": ["data_6", "data_15"]
+            "max_from": ["sandlime_opening_stock_commons", "sandlime_produced_commons"]
         },
         {
-            "column_name": "data_25",
+            "column_name": "sandlime_deliveries_facings",
             "probability_of_data": 0,
             "default": 0,
             "min": 0,
-            "max_from": ["data_7", "data_16"]
+            "max_from": ["sandlime_opening_stock_facings", "sandlime_produced_facings"]
         },
         {
-            "column_name": "data_26",
+            "column_name": "sandlime_deliveries_engineering",
             "probability_of_data": 0,
             "default": 0,
             "min": 0,
-            "max_from": ["data_8", "data_17"]
+            "max_from": ["sandlime_opening_stock_engineering", "sandlime_produced_engineering"]
+        },
+        {
+            "column_name": "survey",
+            "probability_of_data": 0,
+            "default": "074"
         }
     ],
     "sum_columns": [
         {   
-            "column_name": "sum_0",
+            "column_name": "total_opening_stock",
             "data":
-                {"data_0": "+",
-                "data_1": "+",
-                "data_2": "+",
-                "data_3": "+",
-                "data_4": "+",
-                "data_5": "+",
-                "data_6": "+",
-                "data_7": "+",
-                "data_8": "+"}
+                {"clay_opening_stock_commons": "+",
+                "clay_opening_stock_facings": "+",
+                "clay_opening_stock_engineering": "+",
+                "concrete_opening_stock_commons": "+",
+                "concrete_opening_stock_facings": "+",
+                "concrete_opening_stock_engineering": "+",
+                "sandlime_opening_stock_commons": "+",
+                "sandlime_opening_stock_facings": "+",
+                "sandlime_opening_stock_engineering": "+"}
         },
         {
-            "column_name": "sum_1",
+            "column_name": "total_produced",
             "data":
-                {"data_9": "+",
-                "data_10": "+",
-                "data_11": "+",
-                "data_12": "+",
-                "data_13": "+",
-                "data_14": "+",
-                "data_15": "+",
-                "data_16": "+",
-                "data_17": "+"}
+                {"clay_produced_commons": "+",
+                "clay_produced_facings": "+",
+                "clay_produced_engineering": "+",
+                "concrete_produced_commons": "+",
+                "concrete_produced_facings": "+",
+                "concrete_produced_engineering": "+",
+                "sandlime_produced_commons": "+",
+                "sandlime_produced_facings": "+",
+                "sandlime_produced_engineering": "+"}
         },
         {
-            "column_name": "sum_2",
+            "column_name": "total_deliveries",
             "data":
-                {"data_18": "+",
-                "data_19": "+",
-                "data_20": "+",
-                "data_21": "+",
-                "data_22": "+",
-                "data_23": "+",
-                "data_24": "+",
-                "data_25": "+",
-                "data_26": "+"}
+                {"clay_deliveries_commons": "+",
+                "clay_deliveries_facings": "+",
+                "clay_deliveries_engineering": "+",
+                "concrete_deliveries_commons": "+",
+                "concrete_deliveries_facings": "+",
+                "concrete_deliveries_engineering": "+",
+                "sandlime_deliveries_commons": "+",
+                "sandlime_deliveries_facings": "+",
+                "sandlime_deliveries_engineering": "+"}
         },
         {
-            "column_name": "sum_3",
+            "column_name": "clay_closing_stock_commons",
             "data":
-                {"data_0": "+",
-                "data_9": "+",
-                "data_18": "-"}
+                {"clay_opening_stock_commons": "+",
+                "clay_produced_commons": "+",
+                "clay_deliveries_commons": "-"}
         },
         {
-            "column_name": "sum_4",
+            "column_name": "clay_closing_stock_facings",
             "data":
-                {"data_1": "+",
-                "data_10": "+",
-                "data_19": "-"}
+                {"clay_opening_stock_facings": "+",
+                "clay_produced_facings": "+",
+                "clay_deliveries_facings": "-"}
         },
         {
-            "column_name": "sum_5",
+            "column_name": "clay_closing_stock_engineering",
             "data":
-                {"data_2": "+",
-                "data_11": "+",
-                "data_20": "-"}
+                {"clay_opening_stock_engineering": "+",
+                "clay_produced_engineering": "+",
+                "clay_deliveries_engineering": "-"}
         },
         {
-            "column_name": "sum_6",
+            "column_name": "concrete_closing_stock_commons",
             "data":
-                {"data_3": "+",
-                "data_12": "+",
-                "data_21": "-"}
+                {"concrete_opening_stock_commons": "+",
+                "concrete_produced_commons": "+",
+                "concrete_deliveries_commons": "-"}
         },
         {
-            "column_name": "sum_7",
+            "column_name": "concrete_closing_stock_facings",
             "data":
-                {"data_4": "+",
-                "data_13": "+",
-                "data_22": "-"}
+                {"concrete_opening_stock_facings": "+",
+                "concrete_produced_facings": "+",
+                "concrete_deliveries_facings": "-"}
         },
         {
-            "column_name": "sum_8",
+            "column_name": "concrete_closing_stock_engineering",
             "data":
-                {"data_5": "+",
-                "data_14": "+",
-                "data_23": "-"}
+                {"concrete_opening_stock_engineering": "+",
+                "concrete_produced_engineering": "+",
+                "concrete_deliveries_engineering": "-"}
         },
         {
-            "column_name": "sum_9",
+            "column_name": "sandlime_closing_stock_commons",
             "data":
-                {"data_6": "+",
-                "data_15": "+",
-                "data_24": "-"}
+                {"sandlime_opening_stock_commons": "+",
+                "sandlime_produced_commons": "+",
+                "sandlime_deliveries_commons": "-"}
         },
         {
-            "column_name": "sum_10",
+            "column_name": "sandlime_closing_stock_facings",
             "data":
-                {"data_7": "+",
-                "data_16": "+",
-                "data_25": "-"}
+                {"sandlime_opening_stock_facings": "+",
+                "sandlime_produced_facings": "+",
+                "sandlime_deliveries_facings": "-"}
         },
         {
-            "column_name": "sum_11",
+            "column_name": "sandlime_closing_stock_engineering",
             "data":
-                {"data_8": "+",
-                "data_17": "+",
-                "data_26": "-"}
+                {"sandlime_opening_stock_engineering": "+",
+                "sandlime_produced_engineering": "+",
+                "sandlime_deliveries_engineering": "-"}
         },
         {
-            "column_name": "sum_12",
+            "column_name": "total_closing_stock",
             "data":
-                {"sum_3": "+",
-                "sum_4": "+",
-                "sum_5": "+",
-                "sum_6": "+",
-                "sum_7": "+",
-                "sum_8": "+",
-                "sum_9": "+",
-                "sum_10": "+",
-                "sum_11": "+"}
+                {"clay_closing_stock_commons": "+",
+                "clay_closing_stock_facings": "+",
+                "clay_closing_stock_engineering": "+",
+                "concrete_closing_stock_commons": "+",
+                "concrete_closing_stock_facings": "+",
+                "concrete_closing_stock_engineering": "+",
+                "sandlime_closing_stock_commons": "+",
+                "sandlime_closing_stock_facings": "+",
+                "sandlime_closing_stock_engineering": "+"}
         }
     ]
 }

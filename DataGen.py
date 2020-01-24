@@ -60,7 +60,7 @@ def main(argv):
                                          len(enterprises.index))):
         # Pick enterprise name and id from list file.
         enterprise_name = enterprises.iloc[enterprise_index, 0]
-        enterprise_ref = enterprises.iloc[enterprise_index, 1]
+        enterprise_reference = enterprises.iloc[enterprise_index, 1]
 
         # Decide on a number of subsidiaries the enterprise has.
         number_of_subsidiaries = random.randrange(survey_config['min_subsidiaries'],
@@ -79,7 +79,7 @@ def main(argv):
                 response_df = pd.DataFrame({
                     "period": period,
                     "responder_id": ruref,
-                    "enterprise_ref": enterprise_ref,
+                    "enterprise_reference": enterprise_reference,
                     "enterprise_name": enterprise_name,
                     "gor_code": subsidiary_region
                 }, index=[0])
@@ -96,7 +96,7 @@ def main(argv):
                         response_df[sum_column['column_name']] = 0
                 else:
                     response_df['response_type'] = 2
-
+                    all_default = True
                     # For each value in config.
                     for value in survey_config['values']:
                         # If value should be 0.
@@ -104,6 +104,7 @@ def main(argv):
 
                         # Should value be a valid response.
                         if random.random() <= value['probability_of_data']:
+                            all_default = False
                             # Generate a random value from a range in config.
                             if 'max' in value:
                                 new_value = random.randrange(value['min'], value['max'])
@@ -119,6 +120,9 @@ def main(argv):
 
                         # Save the value generated above in the current response.
                         response_df[value['column_name']] = new_value
+
+                    if all_default:
+                        response_df['response_type'] = 1
 
                     # Calculate all sum columns.
                     for sum_column in survey_config['sum_columns']:
