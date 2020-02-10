@@ -4,7 +4,7 @@
         "responder_id",
         "response_type",
         "gor_code",
-        "enterprise_reference",
+        "enterprise_ref",
         "enterprise_name",
         "Q601_asphalting_sand",
         "Q602_building_soft_sand",
@@ -15,6 +15,7 @@
         "Q607_constructional_fill",
         "Q608_total",
         "land_or_marine",
+        "survey",
         "manifest_rowcount",
         "manifest_runid",
         "manifest_system",
@@ -82,6 +83,11 @@
             "column_name": "land_or_marine",
             "probability_of_data": 0,
             "default": "L"
+        },
+        {
+            "column_name": "survey",
+            "probability_of_data": 0,
+            "default": "066"
         },
         {
             "column_name": "manifest_rowcount",

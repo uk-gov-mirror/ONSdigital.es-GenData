@@ -47,7 +47,8 @@ def main(argv):
 
     final_df = prepared_df[['responder_id', 'county']]
     final_df.to_csv(input_file_name + "_lookup.csv", header=True, index=False)
-    final_df.to_json(input_file_name + "_lookup.json", orient="records")
+    final_string_df = final_df.astype({'responder_id': 'str'})
+    final_string_df.to_json(input_file_name + "_lookup.json", orient="records")
     print('----------')
     print(' Complete')
     print('----------')

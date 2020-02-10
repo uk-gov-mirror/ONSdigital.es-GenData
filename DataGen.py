@@ -13,16 +13,16 @@ def main(argv):
     enterprise_list_file_path = 'fixtures/enterprise_list_1.csv'
     output_file_path = 'fixtures/outputs/sample_out'
     ruref = 10000000000
-    split = True
+    split = False
 
     try:
-        opts, args = getopt.getopt(argv, "hs:r:e:o:i:p", ["survey_file=",
-                                                          "region_file=",
-                                                          "enterprise_file=",
-                                                          "output_file=",
-                                                          "starting_id=",
-                                                          "period_split="
-                                                          ])
+        opts, args = getopt.getopt(argv, "hs:r:e:o:i:p:", ["survey_file=",
+                                                           "region_file=",
+                                                           "enterprise_file=",
+                                                           "output_file=",
+                                                           "starting_id=",
+                                                           "period_split="
+                                                           ])
     except getopt.GetoptError:
         print('DataGen.py -s <survey_file> -r <region_file> -e <enterprise_file> ' +
               '-o <output_file> -i <starting_id> -p <period_split>')
@@ -77,9 +77,9 @@ def main(argv):
             for period in survey_config['periods']:
                 # Add new row to the output.
                 response_df = pd.DataFrame({
-                    "period": period,
-                    "responder_id": ruref,
-                    "enterprise_reference": enterprise_reference,
+                    "period": str(period),
+                    "responder_id": str(ruref),
+                    "enterprise_ref": str(enterprise_reference),
                     "enterprise_name": enterprise_name,
                     "gor_code": subsidiary_region
                 }, index=[0])

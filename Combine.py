@@ -11,12 +11,12 @@ def main(argv):
     out_file_name = 'fixtures/outputs/sample_merged.csv'
 
     try:
-        opts, args = getopt.getopt(argv, "hm:l:o", ["marine_file=",
+        opts, args = getopt.getopt(argv, "hm:l:o:", ["marine_file=",
                                                     "land_file=",
-                                                    "out_file=",
+                                                    "out_file="
                                                     ])
     except getopt.GetoptError:
-        print('Combine.py -i <input_file> -r <region_file> -c <county_file>')
+        print('Combine.py -m <marine_file> -l <land_file> -o <out_file>')
         sys.exit(2)
 
     for opt, arg in opts:
@@ -29,6 +29,7 @@ def main(argv):
             land_file_name = arg
         elif opt in ("-o", "--out_file"):
             out_file_name = arg
+
     land_df = pd.read_csv(land_file_name)
     marine_df = pd.read_csv(marine_file_name)
 
