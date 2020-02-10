@@ -12,9 +12,9 @@ def main(argv):
 
     try:
         opts, args = getopt.getopt(argv, "hm:l:o:", ["marine_file=",
-                                                    "land_file=",
-                                                    "out_file="
-                                                    ])
+                                                     "land_file=",
+                                                     "out_file="
+                                                     ])
     except getopt.GetoptError:
         print('Combine.py -m <marine_file> -l <land_file> -o <out_file>')
         sys.exit(2)

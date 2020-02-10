@@ -61,7 +61,8 @@ def get_county(row, county_df):
     elif row['land_or_marine'] == 'M':
         toggle = 'y'
 
-    county_list = county_df['county'][(county_df['region'] == row['region']) & (county_df['marine'] == toggle)].tolist()
+    county_list = county_df['county'][(county_df['region'] == row['region']) &
+                                      (county_df['marine'] == toggle)].tolist()
 
     return random.choice(county_list)
 
