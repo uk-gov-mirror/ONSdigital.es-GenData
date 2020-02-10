@@ -79,7 +79,7 @@ def main(argv):
                 response_df = pd.DataFrame({
                     "period": str(period),
                     "responder_id": str(ruref),
-                    "enterprise_ref": str(enterprise_reference),
+                    "enterprise_reference": str(enterprise_reference),
                     "enterprise_name": enterprise_name,
                     "gor_code": subsidiary_region
                 }, index=[0])
